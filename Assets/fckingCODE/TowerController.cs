@@ -7,7 +7,7 @@ namespace fckingCODE
     {
         public TowerContainer TowerContainer;
 
-        private bool _isVacant;
+        private bool _isVacant = true;
         private GameObject _target;
         private bool _cooldown;
 
@@ -15,17 +15,16 @@ namespace fckingCODE
         {
             if (_isVacant)
             {
-                if (!_cooldown)
-                {
-                    FindTarget();
-                }
-                
+                FindTarget();
             }
             else
             {
-                if (_target != null)
+                if (!_cooldown)
                 {
-                    FireAction();
+                    if (_target != null)
+                    {
+                        FireAction();
+                    }
                 }
             }
         }
@@ -44,13 +43,16 @@ namespace fckingCODE
         private void Fire()
         {
             var bullet = Instantiate(TowerContainer.Bullet);
-            bullet.transform.LookAt(_target.transform);
+            bullet.transform.position = TowerContainer.BulletPosition.position;
+            bullet.transform.LookAt(_target.GetComponent<EnemyContainer>().RootPosition);
+            _cooldown = true;
             StartCoroutine(CooldownCounter());
         }
 
         private void FindTarget()
         {
                 var enemyes = TowerContainer.EnemySpawner.Enemyes;
+                if (enemyes.Count == 0) return;
                 _target = FindNearest.FindNearestObject(transform, enemyes);
                 if (_target != null)
                 {

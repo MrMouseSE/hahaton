@@ -12,8 +12,8 @@ namespace fckingCODE
 
         public List<TowerController> TowerControllers
         {
-            get => TowerControllers;
-            set => TowerControllers = value;
+            get { return _towerControllers; }
+            set { TowerControllers = value; }
         }
 
         private void Awake()
@@ -24,7 +24,9 @@ namespace fckingCODE
         public void InstantiateTower(int towerID)
         {
             var tower = Instantiate(PlayerContainer.Towers[towerID]);
-            _towerControllers.Add(tower.GetComponent<TowerController>());
+            var towerController = tower.GetComponent<TowerController>();
+            towerController.TowerContainer.EnemySpawner = PlayerContainer.EnemySpawner;
+            _towerControllers.Add(towerController);
             tower.transform.position = GetTowerPlace(tower.transform);
         }
 

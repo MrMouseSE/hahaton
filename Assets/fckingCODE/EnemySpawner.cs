@@ -19,11 +19,6 @@ namespace fckingCODE
         
         private void Awake()
         {
-            var g = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-            g.transform.position = new Vector3(3,3,3);
-            player = g.transform;
-            
-            //_palyer = ...
             Enemyes = new List<GameObject>();
             doSpawns = true;
             _timeCounter = spawnsSpeed;
@@ -45,6 +40,7 @@ namespace fckingCODE
         private void SpawnEnemy()
         {
             var newEnemy =  Instantiate(_enemyСopy);
+            newEnemy.transform.position = new Vector3(10,10,10);
             newEnemy.GetComponent<EnemyController>().Init(this, player);
             Enemyes.Add(newEnemy);
         }
