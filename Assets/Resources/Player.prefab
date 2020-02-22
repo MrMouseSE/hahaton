@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1388079648}
   - component: {fileID: 1388079647}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: GameCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3869095157000526568}
   - component: {fileID: 7027312978178388040}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tower (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6850465972828352023}
   - component: {fileID: 1391182805313155308}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,6 +210,8 @@ GameObject:
   - component: {fileID: 9042381841063885024}
   - component: {fileID: 1574142080501365059}
   - component: {fileID: 1130779265}
+  - component: {fileID: 7580270523000694482}
+  - component: {fileID: 3921724461284998990}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -286,6 +288,32 @@ MonoBehaviour:
   player: {fileID: 4310742255019290255}
   spawnsSpeed: 3
   doSpawns: 0
+--- !u!114 &7580270523000694482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5592800169562306257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43721efbdb84bc8409ba1222e9f8d371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ControlSystemCamera: {fileID: 1388079647}
+--- !u!65 &3921724461284998990
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5592800169562306257}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 1, z: 100}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1 &5973219862265535116
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6287236485683220305}
   - component: {fileID: 4577424873733249965}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tower (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7981456719144909817}
   - component: {fileID: 7399505788690218788}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tower (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 596063869593629560}
   - component: {fileID: 4931265922867838179}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tower (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4388382449490163789}
   - component: {fileID: 2653154474930815284}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tower (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
