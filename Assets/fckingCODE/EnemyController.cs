@@ -22,8 +22,11 @@ namespace fckingCODE
         
         private void MoveTo()
         {
+            if (_target == null) return;
+
             transform.LookAt(_target);
-            transform.forward *= _enemyContainer.Speed;
+            float step = _enemyContainer.Speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, _target.position, step);
         }
 
         private void OnCollisionEnter(Collision other)
