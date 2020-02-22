@@ -9,11 +9,6 @@ namespace fckingCODE
         private bool _isVacant;
         private GameObject _target;
 
-        private void Init()
-        {
-            
-        }
-
         private void Update()
         {
             if (_isVacant)
@@ -49,7 +44,7 @@ namespace fckingCODE
         private void FindTarget()
         {
                 var enemyes = TowerContainer.EnemySpawner.Enemyes;
-                _target = FindDistanceToEnemy.FindNearestEnemy(transform, enemyes);
+                _target = FindNearest.FindNearestObject(transform, enemyes);
                 if (_target != null)
                 {
                     _isVacant = false;
