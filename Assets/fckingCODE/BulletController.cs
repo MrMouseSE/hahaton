@@ -5,6 +5,16 @@ public class BulletController : MonoBehaviour
 {
     public BulletContainer BulletContainer;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        DestroyThis();
+    }
+
+    private void DestroyThis()
+    {
+        Destroy(gameObject);
+    }
+
     private void Update()
     {
         MoveTo();
@@ -12,6 +22,6 @@ public class BulletController : MonoBehaviour
 
     public void MoveTo()
     {
-        transform.position += transform.forward * BulletContainer.Speed;
+        transform.position += transform.forward * BulletContainer.Speed * Time.deltaTime;
     }
 }

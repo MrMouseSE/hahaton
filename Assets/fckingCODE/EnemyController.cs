@@ -29,9 +29,9 @@ namespace fckingCODE
             transform.position = Vector3.MoveTowards(transform.position, _target.position, step);
         }
 
-        private void OnCollisionEnter(Collision other)
+        private void OnTriggerEnter(Collider other)
         {
-            var obj = other.collider.gameObject;
+            var obj = other.gameObject;
             
             if (obj.layer == 8)
             {
@@ -53,9 +53,8 @@ namespace fckingCODE
 
         private void SelfDestruction()
         {
-            _enemySpawner.Enemyes.Remove(this.gameObject);
-            GameObject.Destroy(this.gameObject);
+            _enemySpawner.Enemyes.Remove(gameObject);
+            Destroy(gameObject);
         }
     }
 }
-
