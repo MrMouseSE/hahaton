@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1388079646
 AudioListener:
   m_ObjectHideFlags: 0
@@ -303,10 +303,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1130779265, guid: 5ca5e225446368749a15a3c3373fe659, type: 3}
-      propertyPath: spawnsSpeed
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4310742255019290255, guid: 5ca5e225446368749a15a3c3373fe659,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -366,6 +362,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042381841063885024, guid: 5ca5e225446368749a15a3c3373fe659,
+        type: 3}
+      propertyPath: Speed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ca5e225446368749a15a3c3373fe659, type: 3}
