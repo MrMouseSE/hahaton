@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,8 @@ namespace fckingCODE
             get { return _towerControllers; }
             set { TowerControllers = value; }
         }
+
+        private Coroutine _coroutine;
 
         private void Awake()
         {
@@ -36,15 +39,19 @@ namespace fckingCODE
 
             if (massDif < 0)
             {
-                angle = Mathf.Lerp(0,15f, Math.Abs(massDif));    
+                angle = Mathf.Lerp(0,15f, Math.Abs(massDif/10));    
             }
             else
             {
-                angle = Mathf.Lerp(0,-15f, Math.Abs(massDif));
+                angle = Mathf.Lerp(0,-15f, Math.Abs(massDif/10));
             }
-            
-            PlayerContainer.Mesh.transform.rotation = Quaternion.Euler(0,-angle,angle);
-            
+
+            if (_coroutine != null)
+            {
+                StopCoroutine(_coroutine);
+            }
+
+            _coroutine = StartCoroutine(MassEffectAppend(angle));
         }
 
         private float GetMassDif()
@@ -84,6 +91,17 @@ namespace fckingCODE
                 return go.transform.position;
             }
             return Vector3.one;
+        }
+
+        private IEnumerator MassEffectAppend(float angle)
+        {
+            while (PlayerContainer.Mesh.transform.rotation != Quaternion.Euler(0,-angle,angle))
+            {
+                yield return new WaitForEndOfFrame();
+                PlayerContainer.Mesh.transform.rotation = Quaternion.Lerp(PlayerContainer.Mesh.transform.rotation,
+                    Quaternion.Euler(0, -angle, angle), 0.01f);
+                //PlayerContainer.Mesh.transform.rotation = Quaternion.Euler(0,-angle,angle);
+            }
         }
     }
 }
