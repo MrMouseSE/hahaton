@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyContainer : MonoBehaviour
+namespace fckingCODE
 {
-    // Start is called before the first frame update
-    void Start()
+    public class EnemyContainer : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public float Health;
+        public float Damage;
+        public float Speed;
     }
 }
