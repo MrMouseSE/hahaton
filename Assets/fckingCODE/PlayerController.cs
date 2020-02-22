@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace fckingCODE
@@ -7,17 +8,20 @@ namespace fckingCODE
     {
         public PlayerContainer PlayerContainer;
 
-        private List<TowerController> _towerControllers;
+        private List<TowerController> _towerControllers = new List<TowerController>();
 
         public List<TowerController> TowerControllers
         {
             get => TowerControllers;
             set => TowerControllers = value;
         }
-        
-        
 
-        private void InstantiateTower(int towerID)
+        private void Awake()
+        {
+            InstantiateTower(0);
+        }
+
+        public void InstantiateTower(int towerID)
         {
             var tower = Instantiate(PlayerContainer.Towers[towerID]);
             _towerControllers.Add(tower.GetComponent<TowerController>());
@@ -27,8 +31,11 @@ namespace fckingCODE
         private Vector3 GetTowerPlace(Transform transform)
         {
             var go = FindNearest.FindNearestObject(transform, PlayerContainer.TowerPlaces);
-            
-            return go.transform.position;
+            if (go != null)
+            {
+                return go.transform.position;
+            }
+            return Vector3.one;
         }
     }
 }

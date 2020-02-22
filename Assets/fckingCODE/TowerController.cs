@@ -17,7 +17,7 @@ namespace fckingCODE
             {
                 if (!_cooldown)
                 {
-                    FindTarget();    
+                    FindTarget();
                 }
                 
             }
