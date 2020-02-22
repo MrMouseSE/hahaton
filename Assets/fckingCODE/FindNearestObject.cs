@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace fckingCODE
 {
-    public class FindDistanceToEnemy : MonoBehaviour
+    public static class FindNearest
     {
-        public static GameObject FindNearestEnemy(Transform thisTransform, List<GameObject> listGO)
+        public static GameObject FindNearestObject(Transform thisTransform, List<GameObject> listGO)
         {
             float listCount = listGO.Count;
             GameObject nearestGO = null;
