@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace fckingCODE
 {
@@ -8,12 +9,17 @@ namespace fckingCODE
 
         private bool _isVacant;
         private GameObject _target;
+        private bool _cooldown;
 
         private void Update()
         {
             if (_isVacant)
             {
-                FindTarget();
+                if (!_cooldown)
+                {
+                    FindTarget();    
+                }
+                
             }
             else
             {
@@ -39,6 +45,7 @@ namespace fckingCODE
         {
             var bullet = Instantiate(TowerContainer.Bullet);
             bullet.transform.LookAt(_target.transform);
+            StartCoroutine(CooldownCounter());
         }
 
         private void FindTarget()
@@ -49,6 +56,15 @@ namespace fckingCODE
                 {
                     _isVacant = false;
                 }
+        }
+
+        private IEnumerator CooldownCounter()
+        {
+            while (_cooldown)
+            {
+                yield return new WaitForSeconds(1/TowerContainer.FireRate);
+                _cooldown = false;
+            }
         }
     }
 }

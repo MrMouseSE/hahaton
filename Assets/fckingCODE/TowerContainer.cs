@@ -6,10 +6,9 @@ namespace fckingCODE
     public class TowerContainer : MonoBehaviour
     {
         public GameObject Bullet;
-        public float BulletSpeed;
+        public float FireRate;
         
         [NonSerialized]
         public EnemySpawner EnemySpawner;
-
     }
 }
