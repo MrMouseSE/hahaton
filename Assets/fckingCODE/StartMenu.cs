@@ -8,7 +8,7 @@ public class StartMenu : MonoBehaviour
 
     private void Awake()
     {
-        _startButton.onClick.AddListener(() => { SceneManager.LoadScene("Start", LoadSceneMode.Single); });
+        _startButton.onClick.AddListener(() => { SceneManager.LoadScene("Level1", LoadSceneMode.Single); });
     }
 
     private void OnDestroy()
