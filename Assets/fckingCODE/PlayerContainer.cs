@@ -10,6 +10,10 @@ namespace fckingCODE
         [Space]
         public float HitPoints;
 
+        public float Speed;
+
+        public GameObject Mesh;
+
         public List<GameObject> TowerPlaces;
         public List<GameObject> Towers;
     }

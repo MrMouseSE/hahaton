@@ -36,8 +36,8 @@ namespace fckingCODE
         }
 
         private void RotateTowerToTarget()
-        {
-            transform.LookAt(_target.transform);
+        {            
+            TowerContainer.BulletPosition.LookAt(_target.transform);
         }
 
         private void Fire()

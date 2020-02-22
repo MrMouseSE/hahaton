@@ -5,8 +5,14 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="fckingCODE" t="Include">
+          <e p="BulletContainer.cs" t="Include" />
+          <e p="BulletController.cs" t="Include" />
+          <e p="EnemyContainer.cs" t="Include" />
+          <e p="EnemyController.cs" t="Include" />
           <e p="EnemySpawner.cs" t="Include" />
-          <e p="FindDistanceToEnemy.cs" t="Include" />
+          <e p="FindNearestObject.cs" t="Include" />
+          <e p="PlayerContainer.cs" t="Include" />
+          <e p="PlayerController.cs" t="Include" />
           <e p="TowerContainer.cs" t="Include" />
           <e p="TowerController.cs" t="Include" />
         </e>
