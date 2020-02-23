@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletPosition: {fileID: 8447988252530717749}
-  Bullet: {fileID: 9046852193139781540, guid: 875d7d428bbd9bf4b89f4041ff5ad9a9, type: 3}
+  Bullet: {fileID: 3990943178200624964, guid: 89da459b62787ae459535de55e30b24d, type: 3}
   FireRate: 1
   Damage: 0
   Mass: 0
