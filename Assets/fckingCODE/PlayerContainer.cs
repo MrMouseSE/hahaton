@@ -14,6 +14,9 @@ namespace fckingCODE
 
         public GameObject Mesh;
 
+        public float RotateAngle;
+        public float RollAngle;
+
         public List<GameObject> TowerPlaces;
         public List<GameObject> Towers;
     }

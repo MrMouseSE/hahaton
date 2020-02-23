@@ -18,6 +18,12 @@ public class BulletController : MonoBehaviour
     private void Update()
     {
         MoveTo();
+        if (BulletContainer.LiveTime>0)
+        {
+            BulletContainer.LiveTime -= Time.deltaTime;
+            return;
+        }
+        DestroyThis();
     }
 
     public void MoveTo()

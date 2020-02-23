@@ -49,7 +49,9 @@ MonoBehaviour:
   BulletPosition: {fileID: 4211843146179646847}
   Bullet: {fileID: 9046852193139781540, guid: 875d7d428bbd9bf4b89f4041ff5ad9a9, type: 3}
   FireRate: 0.1
+  Damage: 10
   Mass: 1
+  Level: 0
 --- !u!114 &9000219206908231534
 MonoBehaviour:
   m_ObjectHideFlags: 0

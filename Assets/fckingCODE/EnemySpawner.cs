@@ -40,9 +40,14 @@ namespace fckingCODE
         private void SpawnEnemy()
         {
             var newEnemy =  Instantiate(_enemyСopy);
-            newEnemy.transform.position = new Vector3(10,10,10);
+            newEnemy.transform.position = GetNewEnemyPosition();
             newEnemy.GetComponent<EnemyController>().Init(this, player);
             Enemyes.Add(newEnemy);
+        }
+
+        private Vector3 GetNewEnemyPosition()
+        {
+            return new Vector3(0,0,-10);
         }
     }
 }

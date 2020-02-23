@@ -99,8 +99,7 @@ namespace fckingCODE
             {
                 yield return new WaitForEndOfFrame();
                 PlayerContainer.Mesh.transform.rotation = Quaternion.Lerp(PlayerContainer.Mesh.transform.rotation,
-                    Quaternion.Euler(0, -angle, angle), 0.01f);
-                //PlayerContainer.Mesh.transform.rotation = Quaternion.Euler(0,-angle,angle);
+                    Quaternion.Euler(0, -angle*PlayerContainer.RotateAngle, angle*PlayerContainer.RollAngle), 0.01f);
             }
         }
     }

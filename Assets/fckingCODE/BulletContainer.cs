@@ -7,5 +7,6 @@ namespace fckingCODE
         public Transform RootPosition;
         public float Speed;
         public float Damage;
+        public float LiveTime;
     }
 }

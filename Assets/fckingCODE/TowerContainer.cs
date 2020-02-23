@@ -8,6 +8,7 @@ namespace fckingCODE
         public Transform BulletPosition;
         public GameObject Bullet;
         public float FireRate;
+        public float Damage;
         public float Mass;
 
         public int Level;
