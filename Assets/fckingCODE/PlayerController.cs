@@ -56,8 +56,9 @@ namespace fckingCODE
         {
             float angle = 0;
             float massDif = GetMassDif();
+            float towersMass = GetTowersMass();
 
-            transform.position += transform.right * PlayerContainer.SideSpeed * massDif / GetTowersMass() * Time.deltaTime;
+            transform.position += transform.right * PlayerContainer.SideSpeed * massDif / towersMass * Time.deltaTime;
             
             angle = Mathf.Lerp(0,15f, Math.Abs(massDif/10)) * massDif>0? -1: 1;
 
@@ -72,6 +73,7 @@ namespace fckingCODE
         private float GetTowersMass()
         {
             float mass = 1f;
+            if (_towerControllers.Count==0) return mass;
             foreach (var towerController in _towerControllers)
             {
                 mass += towerController.TowerContainer.Mass;
@@ -82,6 +84,7 @@ namespace fckingCODE
         private float GetMassDif()
         {
             float massDif = 0;
+            if (_towerControllers.Count==0) return massDif;
             foreach (var towerController in _towerControllers)
             {
                 var towerMass = towerController.TowerContainer.Mass;
@@ -95,19 +98,20 @@ namespace fckingCODE
         {
             var tower = Instantiate(PlayerContainer.Towers[towerID]);
             var towerController = tower.GetComponent<TowerController>();
-            
+
             towerController.TowerContainer.EnemySpawner = PlayerContainer.EnemySpawner;
             _towerControllers.Add(towerController);
+            towerController.IsActive = false;
             tower.transform.position = GetTowerPlace(tower.transform);
         }
 
         private Vector3 GetTowerPlace(Transform transform)
         {
-            var go = FindNearest.FindNearestObject(transform, PlayerContainer.TowerPlaces);
-            if (go != null)
+            var placeTransform = PlayerContainer.NewTowerPlace;
+            if (placeTransform != null)
             {
-                transform.parent = go.transform;
-                return go.transform.position;
+                transform.parent = placeTransform;
+                return placeTransform.position;
             }
             return Vector3.one;
         }

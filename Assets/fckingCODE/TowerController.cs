@@ -10,8 +10,16 @@ namespace fckingCODE
         private GameObject _target;
         private bool _cooldown;
 
+        public bool IsActive { get; set; }
+        
+        private void Awake()
+        {
+            UpdateTowerView();
+        }
+
         private void Update()
         {
+            if (!IsActive) return;
             if (_target == null)
             {
                 FindTarget();
@@ -64,6 +72,31 @@ namespace fckingCODE
                 yield return new WaitForSeconds(1/TowerContainer.FireRate);
                 _cooldown = false;
             }
+        }
+
+        public void UpdateTowerView()
+        {
+            if (TowerContainer.Hardpoint.childCount > 0)
+            {
+                Destroy(TowerContainer.Hardpoint.GetChild(0));
+            }
+            switch (TowerContainer.Level)
+            {
+                case 1:
+                    Instantiate(TowerContainer.Level1Mesh).transform.SetParent(TowerContainer.Hardpoint);
+                    break;
+                case 2:
+                    Instantiate(TowerContainer.Level2Mesh).transform.SetParent(TowerContainer.Hardpoint);
+                    break;
+                case 3:
+                    Instantiate(TowerContainer.Level3Mesh).transform.SetParent(TowerContainer.Hardpoint);
+                    break;
+            }
+        }
+
+        public void SelfDestroy()
+        {
+            Destroy(gameObject);
         }
     }
 }

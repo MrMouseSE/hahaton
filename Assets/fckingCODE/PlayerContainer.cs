@@ -21,7 +21,9 @@ namespace fckingCODE
 
         public List<GameObject> TowerPlaces;
         public List<GameObject> Towers;
+        public Transform NewTowerPlace;
 
+        [Space]
         public Image GameOverImage;
         public GameObject GameOverButton;
     }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3019687378416915848
+--- !u!1 &6415647068530225876
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3019687378416748968}
-  - component: {fileID: 3019687378420140424}
-  - component: {fileID: 3019687378419174216}
+  - component: {fileID: 6415647068530061044}
+  - component: {fileID: 6415647068533485268}
+  - component: {fileID: 6415647068532485140}
   m_Layer: 0
-  m_Name: Turret
+  m_Name: GatlingLevel3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3019687378416748968
+--- !u!4 &6415647068530061044
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3019687378416915848}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.153, y: 0.227, z: 0.024}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3019687378416748972}
+  m_GameObject: {fileID: 6415647068530225876}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_Children:
+  - {fileID: 6415647068530061046}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3019687378420140424
+--- !u!33 &6415647068533485268
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3019687378416915848}
-  m_Mesh: {fileID: 4300002, guid: 2a96cd7ec70711242b6d79a5e10dd43e, type: 3}
---- !u!23 &3019687378419174216
+  m_GameObject: {fileID: 6415647068530225876}
+  m_Mesh: {fileID: 4300002, guid: 265c771862e63e84ab8ab1ece037befa, type: 3}
+--- !u!23 &6415647068532485140
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3019687378416915848}
+  m_GameObject: {fileID: 6415647068530225876}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -58,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8b4b5511fef63d444ba4a2ce03e79ebc, type: 2}
+  - {fileID: 2100000, guid: 8a70047a7a3babd47b2129f90e43eaa4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &3019687378416915852
+--- !u!1 &6415647068530225878
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,59 +88,74 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3019687378416748972}
-  - component: {fileID: 1538628522687543446}
-  - component: {fileID: 8003336555753329473}
+  - component: {fileID: 6415647068530061046}
+  - component: {fileID: 6415647068533485270}
+  - component: {fileID: 6415647068532485142}
   m_Layer: 0
-  m_Name: Tow_Rocket_3
+  m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3019687378416748972
+--- !u!4 &6415647068530061046
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3019687378416915852}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
-  m_Children:
-  - {fileID: 3019687378416748968}
-  m_Father: {fileID: 0}
+  m_GameObject: {fileID: 6415647068530225878}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0015869141, y: 0.2673617, z: 1.1179212}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6415647068530061044}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1538628522687543446
-MonoBehaviour:
+--- !u!33 &6415647068533485270
+MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3019687378416915852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db9e6595c4c1940429433a8ad4b9cc73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TowerContainer: {fileID: 8003336555753329473}
---- !u!114 &8003336555753329473
-MonoBehaviour:
+  m_GameObject: {fileID: 6415647068530225878}
+  m_Mesh: {fileID: 4300004, guid: 265c771862e63e84ab8ab1ece037befa, type: 3}
+--- !u!23 &6415647068532485142
+MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3019687378416915852}
+  m_GameObject: {fileID: 6415647068530225878}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aba2bdb0c3a97e7429e31840fcf37a10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletPosition: {fileID: 3019687378416748972}
-  Bullet: {fileID: 9046852193139781540, guid: 875d7d428bbd9bf4b89f4041ff5ad9a9, type: 3}
-  FireRate: 1
-  Damage: 0
-  Mass: 0
-  Level: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 8a70047a7a3babd47b2129f90e43eaa4, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
