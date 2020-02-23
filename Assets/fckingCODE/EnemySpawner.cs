@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace fckingCODE
 {
@@ -47,7 +48,7 @@ namespace fckingCODE
 
         private Vector3 GetNewEnemyPosition()
         {
-            return new Vector3(0,0,-10);
+            return new Vector3(Random.Range(-10f, 10f),0,-10);
         }
     }
 }
