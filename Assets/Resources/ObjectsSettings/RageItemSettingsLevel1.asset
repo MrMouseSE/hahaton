@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: EnemySettingsLevel1
+  m_Script: {fileID: 11500000, guid: e8a54394cd425eb44b515c53e87a8d48, type: 3}
+  m_Name: RageItemSettingsLevel1
   m_EditorClassIdentifier: Assembly-CSharp:fckingCODE:EnemySettings
-  EnemyLevel: 1
-  EnemyMeshes:
-  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  - {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  EnemyHitPoints: {x: 10, y: 50}
-  EnemyDamage: {x: 10, y: 20}
-  EnemySpeed: {x: 10, y: 20}
+  EnemyLevel: 0
+  EnemyMeshes: []
+  EnemyHitPoints: {x: 0, y: 0}
+  EnemyDamage: {x: 0, y: 0}
+  EnemySpeed: {x: 0, y: 0}
   EnemyRage: {x: 0, y: 0}

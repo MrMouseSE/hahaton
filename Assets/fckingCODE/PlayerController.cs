@@ -35,7 +35,7 @@ namespace fckingCODE
             float angle = 0;
             float massDif = GetMassDif();
 
-            transform.position += transform.right * PlayerContainer.SideSpeed * massDif/GetTowersMass() * Time.deltaTime;
+            transform.position += transform.right * PlayerContainer.SideSpeed * massDif / GetTowersMass() * Time.deltaTime;
             
             angle = Mathf.Lerp(0,15f, Math.Abs(massDif/10)) * massDif>0? -1: 1;
 
@@ -49,7 +49,7 @@ namespace fckingCODE
 
         private float GetTowersMass()
         {
-            float mass = 0f;
+            float mass = 1f;
             foreach (var towerController in _towerControllers)
             {
                 mass += towerController.TowerContainer.Mass;
