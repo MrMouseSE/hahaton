@@ -17,6 +17,10 @@ namespace fckingCODE
 
         private void Update()
         {
+            if (Vector3.Distance(transform.position,_target.position)>50)
+            {
+                SelfDestruction();
+            }
             MoveTo();
         }
         

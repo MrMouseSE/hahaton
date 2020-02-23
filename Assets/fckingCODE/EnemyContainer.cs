@@ -10,5 +10,6 @@ namespace fckingCODE
         public float Health;
         public float Damage;
         public float Speed;
+        public float Rage;
     }
 }

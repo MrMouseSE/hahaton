@@ -128,7 +128,7 @@ MonoBehaviour:
   RootPosition: {fileID: 1484510237330454327}
   Speed: 10
   Damage: 100
-  LiveTime: 10
+  LiveTime: 2
 --- !u!114 &5293454892017752869
 MonoBehaviour:
   m_ObjectHideFlags: 0
