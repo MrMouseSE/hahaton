@@ -1,33 +1,35 @@
-﻿using fckingCODE;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class BulletController : MonoBehaviour
+namespace fckingCODE
 {
-    public BulletContainer BulletContainer;
-
-    private void OnTriggerEnter(Collider other)
+    public class BulletController : MonoBehaviour
     {
-        DestroyThis();
-    }
+        public BulletContainer BulletContainer;
 
-    private void DestroyThis()
-    {
-        Destroy(gameObject);
-    }
-
-    private void Update()
-    {
-        MoveTo();
-        if (BulletContainer.LiveTime>0)
+        private void OnTriggerEnter(Collider other)
         {
-            BulletContainer.LiveTime -= Time.deltaTime;
-            return;
+            DestroyThis();
         }
-        DestroyThis();
-    }
 
-    public void MoveTo()
-    {
-        transform.position += transform.forward * BulletContainer.Speed * Time.deltaTime;
+        private void DestroyThis()
+        {
+            Destroy(gameObject);
+        }
+
+        private void Update()
+        {
+            MoveTo();
+            if (BulletContainer.LiveTime>0)
+            {
+                BulletContainer.LiveTime -= Time.deltaTime;
+                return;
+            }
+            DestroyThis();
+        }
+
+        public void MoveTo()
+        {
+            transform.position += transform.forward * BulletContainer.Speed * Time.deltaTime;
+        }
     }
 }
