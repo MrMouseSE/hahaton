@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7728277554519749780
 Transform:
   m_ObjectHideFlags: 0
@@ -64,6 +64,7 @@ MonoBehaviour:
   Health: 100
   Damage: 1
   Speed: 0.5
+  Rage: 0
 --- !u!65 &4058299982805171045
 BoxCollider:
   m_ObjectHideFlags: 0

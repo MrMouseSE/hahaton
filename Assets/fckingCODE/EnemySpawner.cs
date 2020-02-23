@@ -40,8 +40,9 @@ namespace fckingCODE
 
         private void SpawnEnemy()
         {
-            var newEnemy =  Instantiate(_enemyСopy);
-            newEnemy.transform.position = GetNewEnemyPosition();
+            var position = GetNewEnemyPosition();
+            var newEnemy =  EnemyFactory.Spawn(1, position);
+            //newEnemy.transform.position = GetNewEnemyPosition();
             newEnemy.GetComponent<EnemyController>().Init(this, player);
             Enemyes.Add(newEnemy);
         }
