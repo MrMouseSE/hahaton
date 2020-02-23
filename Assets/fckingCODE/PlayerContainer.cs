@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace fckingCODE
 {
@@ -20,5 +21,8 @@ namespace fckingCODE
 
         public List<GameObject> TowerPlaces;
         public List<GameObject> Towers;
+
+        public Image GameOverImage;
+        public GameObject GameOverButton;
     }
 }

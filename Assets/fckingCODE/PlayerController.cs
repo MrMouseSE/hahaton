@@ -30,6 +30,28 @@ namespace fckingCODE
             SideShift();
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            var obj = other.gameObject;
+            
+            if (obj.layer != 8)
+            {
+                TakeDamage(obj.GetComponent<EnemyContainer>().Damage);
+                return;
+            }
+            
+            SelfDestruction();
+        }
+
+        private void TakeDamage(float damage)
+        {
+            PlayerContainer.HitPoints -= damage;
+            if (PlayerContainer.HitPoints<= 0)
+            {
+                SelfDestruction();
+            }
+        }
+
         private void SideShift()
         {
             float angle = 0;
@@ -98,6 +120,36 @@ namespace fckingCODE
                 PlayerContainer.Mesh.transform.rotation = Quaternion.Lerp(PlayerContainer.Mesh.transform.rotation,
                     Quaternion.Euler(0, -angle*PlayerContainer.RotateAngle, angle*PlayerContainer.RollAngle), 0.01f);
             }
+        }
+
+        private void SelfDestruction()
+        {
+            var lights = FindObjectsOfType<Light>();
+            
+            PlayerContainer.EnemySpawner.doSpawns = false;
+            PlayerContainer.Speed = 0;
+            
+            StartCoroutine(AddAlpha(3, lights));
+        }
+
+        private IEnumerator AddAlpha(float time, Light[] lights)
+        {
+            while (time>0)
+            {
+                foreach (var light in lights)
+                {
+                    light.intensity -= 0.05f;
+                }
+                
+                var alpha = PlayerContainer.GameOverImage.color.a;
+                alpha += 0.1f;
+                PlayerContainer.GameOverImage.color = new Color(1,1,1,alpha);
+                time -= 0.1f;
+                yield return new WaitForEndOfFrame();
+            }
+
+            PlayerContainer.GameOverButton.SetActive(true);
+            gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
 }

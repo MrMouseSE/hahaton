@@ -14,16 +14,12 @@ namespace fckingCODE
         public bool doSpawns;
 
         private float _timeCounter;
-        private string _enemyPath = "Enemy";
-        private GameObject _enemyСopy;
-
         
         private void Awake()
         {
             Enemyes = new List<GameObject>();
             doSpawns = true;
             _timeCounter = spawnsSpeed;
-            _enemyСopy = Resources.Load<GameObject>(_enemyPath);
         }
 
         private void Update()
