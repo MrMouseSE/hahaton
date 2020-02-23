@@ -16,6 +16,7 @@ namespace fckingCODE
 
         public float RotateAngle;
         public float RollAngle;
+        public float SideSpeed;
 
         public List<GameObject> TowerPlaces;
         public List<GameObject> Towers;

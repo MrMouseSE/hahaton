@@ -35,16 +35,9 @@ namespace fckingCODE
             float angle = 0;
             float massDif = GetMassDif();
 
-            transform.position += transform.right * massDif * Time.deltaTime;
-
-            if (massDif < 0)
-            {
-                angle = Mathf.Lerp(0,15f, Math.Abs(massDif/10));    
-            }
-            else
-            {
-                angle = Mathf.Lerp(0,-15f, Math.Abs(massDif/10));
-            }
+            transform.position += transform.right * PlayerContainer.SideSpeed * massDif/GetTowersMass() * Time.deltaTime;
+            
+            angle = Mathf.Lerp(0,15f, Math.Abs(massDif/10)) * massDif>0? -1: 1;
 
             if (_coroutine != null)
             {
@@ -54,19 +47,23 @@ namespace fckingCODE
             _coroutine = StartCoroutine(MassEffectAppend(angle));
         }
 
+        private float GetTowersMass()
+        {
+            float mass = 0f;
+            foreach (var towerController in _towerControllers)
+            {
+                mass += towerController.TowerContainer.Mass;
+            }
+            return mass;
+        }
+
         private float GetMassDif()
         {
             float massDif = 0;
             foreach (var towerController in _towerControllers)
             {
-                if (towerController.transform.position.x > transform.position.x)
-                {
-                    massDif += towerController.TowerContainer.Mass;
-                }
-                else
-                {
-                    massDif -= towerController.TowerContainer.Mass;
-                }
+                var towerMass = towerController.TowerContainer.Mass;
+                massDif += towerMass * towerController.transform.position.x > transform.position.x ? 1 : -1;
             }
 
             return massDif;
