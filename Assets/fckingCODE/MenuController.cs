@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class StartMenu : MonoBehaviour
+public class MenuController : MonoBehaviour
 {
     [SerializeField] private Button _startButton;
 
