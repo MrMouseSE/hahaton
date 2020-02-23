@@ -2,15 +2,15 @@
 
 namespace fckingCODE
 {
-    public class TowerControlSystem : MonoBehaviour
+    public class TowerControlSystem : MonoBehaviour 
     {
         public Camera ControlSystemCamera;
 
         private bool _hasTower;
         private GameObject _towerPosition;
         private GameObject _tower;
-        
-        private void OnMouseDown()
+
+        public void OnMouseDown()
         {
             
             var towerPosition = GetCastTarget();
@@ -39,6 +39,10 @@ namespace fckingCODE
         {
             if (_hasTower) return _tower;
 
+            if (towerPosition.transform.childCount==0)
+            {
+                return null;
+            }
             var tower = towerPosition.GetComponentInChildren<TowerController>().gameObject;
             _hasTower = true;
 
