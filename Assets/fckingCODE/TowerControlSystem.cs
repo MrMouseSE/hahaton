@@ -42,7 +42,7 @@ namespace fckingCODE
                     _tower.transform.position = hitInfo.point;
                 }
             }
-            NewTowerPosition.gameObject.SetActive(false);
+            //NewTowerPosition.gameObject.SetActive(false);
         }
 
         private GameObject GetCastTarget()
@@ -91,7 +91,7 @@ namespace fckingCODE
 
         private void SetTower(GameObject newTowerPosition)
         {
-            NewTowerPosition.gameObject.SetActive(true);
+            //NewTowerPosition.gameObject.SetActive(true);
             if (newTowerPosition == _towerPosition)
             {
                 SetNewTower(_towerPosition);
