@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace fckingCODE
 {
@@ -6,6 +7,8 @@ namespace fckingCODE
     {
         private EnemySpawner _enemySpawner;
         private Transform _target;
+        public GameObject _meshTransform;
+        public ParticleSystem _particle;
         
         public EnemyContainer _enemyContainer;
 
@@ -17,6 +20,7 @@ namespace fckingCODE
 
         private void Update()
         {
+            if (_target == null) return;
             if (Vector3.Distance(transform.position,_target.position)>50)
             {
                 SelfDestruction();
@@ -35,6 +39,8 @@ namespace fckingCODE
 
         private void OnTriggerEnter(Collider other)
         {
+            if (_target == null) return;
+            
             var obj = other.gameObject;
             if (obj.layer == 10 || obj.layer == 9) return;
             
@@ -44,7 +50,7 @@ namespace fckingCODE
                 return;
             }
             
-            SelfDestruction();
+            StartCoroutine(SelfDestruction());
         }
 
         private void TakeDamage(float damage)
@@ -52,13 +58,17 @@ namespace fckingCODE
             _enemyContainer.Health -= damage;
             if (_enemyContainer.Health <= 0)
             {
-                SelfDestruction();    
+                StartCoroutine(SelfDestruction());
             }
         }
 
-        private void SelfDestruction()
+        private IEnumerator SelfDestruction()
         {
             _enemySpawner.Enemyes.Remove(gameObject);
+            _target = null;
+            _meshTransform.SetActive(false);
+            _particle.Play();
+            yield return new WaitForSeconds(_particle.main.duration);
             Destroy(gameObject);
         }
     }
