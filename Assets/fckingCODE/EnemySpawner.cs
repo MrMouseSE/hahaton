@@ -42,13 +42,13 @@ namespace fckingCODE
                     pos.z -= 100;
                     child.position = pos;
                 }
+                SpawnNewChunk(Random.Range(0, Chunks.Count));
                 
                 foreach (var chu in _currentChunksList)
                 {
-                    chu.GetComponent<ChunkController>().CheckDistance(Player.position);
+                    chu.GetComponent<ChunkController>().CheckDistance(Player.position, _currentChunksList);
                 }
                 
-                SpawnNewChunk(Random.Range(0, Chunks.Count));
             }
         }
 
@@ -56,6 +56,8 @@ namespace fckingCODE
         {
             var newChunk = Instantiate(Chunks[index], transform, true);
             newChunk.transform.parent = transform;
+            
+            newChunk.transform.RotateAround(Vector3.zero, Vector3.up, 180*Random.Range(0,2));
 
             var container = newChunk.GetComponent<ChunkContainer>();
             container.Spawner = this;
