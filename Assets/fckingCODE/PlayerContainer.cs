@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,5 +31,7 @@ namespace fckingCODE
         public GameObject GameOverButton;
 
         [Space] public Slider RageDisplay;
+
+        [Space] public Animator TrunkController;
     }
 }
