@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace fckingCODE
@@ -12,17 +13,18 @@ namespace fckingCODE
             GenerateEnemyInPosition();
         }
 
-        public void CheckDistance(Vector3 position)
+        public void CheckDistance(Vector3 position, List<GameObject> list)
         {
             if (Vector3.Distance(position, transform.position) > 100)
             {
+                list.Remove(gameObject);
                 SelfDestroy();
             }
         }
 
         private void SelfDestroy()
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
 
 
