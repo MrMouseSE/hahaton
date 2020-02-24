@@ -1,9 +1,10 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 namespace fckingCODE
 {
-    public class TowerControlSystem : MonoBehaviour 
+    public class TowerControlSystem : MonoBehaviour
     {
         public Camera ControlSystemCamera;
         public Transform NewTowerPosition;
@@ -13,18 +14,112 @@ namespace fckingCODE
         private GameObject _tower = null;
 
         private TowerUpgradeSettingsContainer _towerUpgradeSettingsContainer;
+        private bool _qWasPressed;
+        private bool _wWasPressed;
+        private bool _eWasPressed;
+        private bool _rWasPressed;
+        private bool _aWasPressed;
 
         private void Awake()
         {
-            _towerUpgradeSettingsContainer = AssetDatabase.LoadAssetAtPath<TowerUpgradeSettingsContainer>("Assets/Resources/TowerSettings/TowerUpgradeSettingsContainer.asset");
+            _towerUpgradeSettingsContainer = (TowerUpgradeSettingsContainer) Resources.Load("TowerUpgradeSettingsContainer");
         }
 
         private void Start()
         {
             MouseAction.Instance.OnMouseDwn += MouseDownMethod;
             MouseAction.Instance.OnMouseUp += MouseUpMethod;
-            MouseAction.Instance.OnMouseDrg += MouseDragMethod;
+            //MouseAction.Instance.OnMouseDrg += MouseDragMethod;
         }
+
+        /*public void Update()
+        {
+            if (Input.GetButtonUp("qpress"))
+            {
+                if (_wWasPressed)
+                {
+                    SetTower(Controller.Container.TowerPlaces[0]);
+                    _qWasPressed = false;
+                }
+                if (Controller.Container.NewTowerPlace.childCount>0)
+                {
+                    _tower = Controller.Container.TowerPlaces[0].transform.GetChild(0).gameObject;
+                    _wWasPressed = true;
+                }
+                if (_tower != null)
+                {
+                    SetTower(Controller.Container.TowerPlaces[0]);
+                }
+            }
+            
+            if (Input.GetButtonUp("wpress"))
+            {
+                if (_wWasPressed)
+                {
+                    SetTower(Controller.Container.TowerPlaces[1]);
+                    _wWasPressed = false;
+                }
+                if (Controller.Container.NewTowerPlace.childCount > 0)
+                {
+                    _tower = Controller.Container.TowerPlaces[1].transform.GetChild(0).gameObject;
+                    _wWasPressed = true;
+                }
+                if (_tower != null)
+                {
+                    SetTower(Controller.Container.TowerPlaces[1]);
+                }
+            }
+            
+            if (Input.GetButtonUp("epress"))
+            {
+                if (_rWasPressed)
+                {
+                    SetTower(Controller.Container.TowerPlaces[2]);
+                    _eWasPressed = false;
+                }
+                else if (Controller.Container.NewTowerPlace.childCount > 0)
+                {
+                    _tower = Controller.Container.TowerPlaces[2].transform.GetChild(0).gameObject;
+                    _eWasPressed = true;
+                }
+                if (_tower != null)
+                {
+                    SetTower(Controller.Container.TowerPlaces[2]);
+                }
+            }
+            
+            if (Input.GetButtonUp("rpress"))
+            {
+                if (_rWasPressed)
+                {
+                    SetTower(Controller.Container.TowerPlaces[3]);
+                    _rWasPressed = false;
+                }
+                else if (Controller.Container.NewTowerPlace.childCount > 0)
+                {
+                    _tower = Controller.Container.TowerPlaces[3].transform.GetChild(0).gameObject;
+                    _rWasPressed = true;
+                }
+
+                if (_tower != null)
+                {
+                    SetTower(Controller.Container.TowerPlaces[3]);
+                }
+            }
+            if (Input.GetButtonUp("apress"))
+            {
+                if (_aWasPressed)
+                {
+                    SetTower(Controller.Container.NewTowerPlace.gameObject);
+                }
+                if (Controller.Container.NewTowerPlace.childCount > 0)
+                {
+                    _tower = Controller.Container.NewTowerPlace.GetChild(0).gameObject;
+                    _aWasPressed = true;
+                }
+            }
+        }*/
+        
 
         public void MouseDownMethod()
         {
@@ -55,10 +150,23 @@ namespace fckingCODE
             Ray ray = ControlSystemCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
 
-            if (Physics.Raycast(ray, out hitInfo, 1000f, 1<<9))
+            var info = Physics.RaycastAll(ray, float.MaxValue);
+
+            foreach (var inf in info)
             {
-                return hitInfo.transform.gameObject;
+                
+                if (inf.transform.gameObject.layer == 9)
+                {
+                    Debug.Log(inf.transform.gameObject.name);
+                    return inf.transform.gameObject;
+                }
             }
+
+            /*if (Physics.Raycast(ray, out hitInfo, 1000f, 1<<9))
+            {
+                Debug.LogError(hitInfo.transform.gameObject.name, hitInfo.transform.gameObject);
+                return hitInfo.transform.gameObject;
+            }*/
             return null;
         }
 
@@ -76,9 +184,9 @@ namespace fckingCODE
         private void MouseUpMethod()
         {
             if (_tower == null) return;
-            GameObject newTowerPosition = FindNearest.FindNearestObject(_tower.transform, Controller.Container.TowerPlaces);
-            
-            //var newTowerPosition = GetCastTarget();
+            var newTowerPosition = GetCastTarget(); 
+            //GameObject newTowerPosition = FindNearest.FindNearestObject(_tower.transform, Controller.Container.TowerPlaces);
+
             if (newTowerPosition.transform != Controller.Container.NewTowerPlace)
             {
                 _tower.GetComponent<TowerController>().enabled = true;
@@ -105,7 +213,7 @@ namespace fckingCODE
             }
             else
             {
-                if (Controller.IsBusy)
+                if (Controller.IsBusy && Controller.Container.NewTowerPlace.GetChild(0).gameObject == _tower)
                 {
                     tower.enabled = true;
                     Controller.Container.NewTowerPlace.gameObject.SetActive(false);

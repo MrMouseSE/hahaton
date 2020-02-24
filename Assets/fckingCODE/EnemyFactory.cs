@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 namespace fckingCODE
@@ -7,11 +6,11 @@ namespace fckingCODE
     public class EnemyFactory
     {
         private static EnemySettingsContainer _enemySettingsContainer =
-            AssetDatabase.LoadAssetAtPath<EnemySettingsContainer>("Assets/Resources/EnemySettingsContainer.asset");
+            (EnemySettingsContainer) Resources.Load("EnemySettingsContainer");
         
-        private static GameObject _enemy = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Enemy.prefab");
-        private static GameObject _rageItem = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RageItem.prefab");
-        private static GameObject _obstacle = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Obstacle.prefab");
+        private static GameObject _enemy = (GameObject) Resources.Load("Enemy");
+        private static GameObject _rageItem = (GameObject) Resources.Load("RageItem");
+        private static GameObject _obstacle = (GameObject) Resources.Load("Obstacle");
         private static Vector3 _spawnPosition;
 
         public static GameObject Spawn(int index, Vector3 position, int level)

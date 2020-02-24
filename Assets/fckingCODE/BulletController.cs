@@ -8,7 +8,8 @@ namespace fckingCODE
 
         private void OnTriggerEnter(Collider other)
         {
-            DestroyThis();
+           if(other.gameObject.layer ==12)
+               DestroyThis();
         }
 
         private void DestroyThis()
@@ -21,6 +22,7 @@ namespace fckingCODE
             MoveTo();
             if (BulletContainer.LiveTime>0)
             {
+                
                 BulletContainer.LiveTime -= Time.deltaTime;
                 return;
             }

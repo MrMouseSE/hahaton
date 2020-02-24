@@ -45,6 +45,7 @@ namespace fckingCODE
         {
             var bullet = Instantiate(TowerContainer.Bullet);
             var bulletContainer = bullet.GetComponent<BulletContainer>();
+            
             bulletContainer.Damage = TowerContainer.Damage;
             bullet.transform.position = TowerContainer.BulletPosition.position;
             bullet.transform.LookAt(_target.GetComponent<EnemyContainer>().RootPosition);

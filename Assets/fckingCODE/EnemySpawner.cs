@@ -88,7 +88,7 @@ namespace fckingCODE
         {
             var newEnemy =  EnemyFactory.Spawn(enemyIndex, enemyPosition.position,_level);
             newEnemy.GetComponent<EnemyController>().Init(this, Player);
-            newEnemy.transform.parent = enemyPosition;
+            newEnemy.transform.parent = transform;
             
             if (enemyIndex!=3)
             {
