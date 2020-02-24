@@ -875,18 +875,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397370896}
   m_CullTransparentMesh: 0
---- !u!114 &1467370263 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-    type: 3}
-  m_PrefabInstance: {fileID: 6321859806756224152}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87f6f0e8d081951478a36617c09e0246, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1513638017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1429,140 +1417,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 926168319, guid: 5ca5e225446368749a15a3c3373fe659, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[0].value
-      value: 0.007522583
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[0].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[0].outWeight
-      value: 0.0734666
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[1].time
-      value: 0.5979121
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[1].value
-      value: 1.004163
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[1].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[1].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[2].time
-      value: 0.8993975
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[2].value
-      value: 2.0028348
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[2].inWeight
-      value: 0.05553523
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[2].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[0].time
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[1].inSlope
-      value: 2.666364
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[1].outSlope
-      value: 2.666364
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[2].inSlope
-      value: 4.0062995
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[2].outSlope
-      value: 4.0062995
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[0].inSlope
-      value: 0.8548053
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[0].outSlope
-      value: 0.8548053
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[3].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[3].value
-      value: 2.9630451
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[3].inSlope
-      value: 11.126989
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[3].outSlope
-      value: 11.126989
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[3].inWeight
-      value: 0.20836118
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574142080501365059, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerIndexField.m_Curve.Array.data[3].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 3604464289658127816, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: Controller
-      value: 
-      objectReference: {fileID: 1467370263}
     - target: {fileID: 4310742255019290255, guid: 5ca5e225446368749a15a3c3373fe659,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1623,11 +1477,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5592800169562306257, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 9042381841063885024, guid: 5ca5e225446368749a15a3c3373fe659,
         type: 3}
       propertyPath: GameOverImage
@@ -1643,10 +1492,5 @@ PrefabInstance:
       propertyPath: RageDisplay
       value: 
       objectReference: {fileID: 151138163}
-    - target: {fileID: 9042381841063885024, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerCoast
-      value: 55
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ca5e225446368749a15a3c3373fe659, type: 3}
