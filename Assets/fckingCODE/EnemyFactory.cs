@@ -10,6 +10,8 @@ namespace fckingCODE
             AssetDatabase.LoadAssetAtPath<EnemySettingsContainer>("Assets/Resources/EnemySettingsContainer.asset");
         
         private static GameObject _enemy = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Enemy.prefab");
+        private static GameObject _rageItem = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RageItem.prefab");
+        private static GameObject _obstacle = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Obstacle.prefab");
         private static Vector3 _spawnPosition;
 
         public static GameObject Spawn(int index, Vector3 position)
@@ -18,22 +20,22 @@ namespace fckingCODE
             switch (index)
             {
                 case 1:
-                    return SpawnEnemy(_enemySettingsContainer.EnemySettings);
+                    return SpawnEnemy(_enemySettingsContainer.EnemySettings,_enemy);
                 case 2:
-                    return SpawnEnemy(_enemySettingsContainer.ObstacleSettings);
+                    return SpawnEnemy(_enemySettingsContainer.ObstacleSettings,_obstacle);
                 case 3:
-                    return SpawnEnemy(_enemySettingsContainer.RageItemSettings);
+                    return SpawnEnemy(_enemySettingsContainer.RageItemSettings,_rageItem);
             }
 
             return null;
         }
 
-        private static GameObject SpawnEnemy(List<EnemySettings> enemySettings)
+        private static GameObject SpawnEnemy(List<EnemySettings> enemySettings, GameObject inst)
         {
             var level = 1;
             var settings = GetLevelSettings(level,enemySettings);
             
-            GameObject enemy = Object.Instantiate(_enemy, _spawnPosition, Quaternion.identity);
+            GameObject enemy = Object.Instantiate(inst, _spawnPosition, Quaternion.identity);
             enemy.SetActive(true);
             
             var container = enemy.GetComponent<EnemyContainer>();
