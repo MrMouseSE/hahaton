@@ -19,5 +19,5 @@ MonoBehaviour:
   - {fileID: 6316108951006213676, guid: 0911720410a4c5c4cb7384c558a37432, type: 3}
   EnemyHitPoints: {x: 10, y: 10}
   EnemyDamage: {x: 10, y: 10}
-  EnemySpeed: {x: 10, y: 10}
+  EnemySpeed: {x: 4, y: 6}
   EnemyRage: {x: 1, y: 1}

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ObstacleSettingsLevel1
   m_EditorClassIdentifier: Assembly-CSharp:fckingCODE:EnemySettings
   EnemyLevel: 1
-  EnemyMeshes:
-  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
-  - {fileID: 10207, guid: 0000000000000000e000000000000000, type: 3}
+  EnemyObjects:
+  - {fileID: 1256105667755962375, guid: 326f6782f90632a4187057f60824454c, type: 3}
+  - {fileID: 107531930254385688, guid: 57892f755f584a446ad06a92a1891d22, type: 3}
   EnemyHitPoints: {x: 10, y: 50}
   EnemyDamage: {x: 10, y: 50}
   EnemySpeed: {x: 0, y: 0}
