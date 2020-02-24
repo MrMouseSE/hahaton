@@ -158,8 +158,11 @@ namespace fckingCODE
             Controller.UpdateTowerController(towerController);
             Controller.UpdateMassDif();
             towerController.IsActive = true;
-            _tower.transform.position = towerPosition.transform.position;
             _tower.transform.parent = towerPosition.transform;
+            _tower.transform.rotation = Quaternion.Euler(0,0,0);
+            _tower.transform.position = towerPosition.transform.position;
+            _tower.transform.localScale = Vector3.one;
+            
             _hasTower = false;
         }
     }

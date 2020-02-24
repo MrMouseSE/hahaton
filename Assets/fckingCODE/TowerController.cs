@@ -82,18 +82,28 @@ namespace fckingCODE
             {
                 Destroy(TowerContainer.Hardpoint.GetChild(0));
             }
+
+            GameObject inst;
             switch (TowerContainer.Level)
             {
                 case 1:
-                    Instantiate(TowerContainer.Level1Mesh).transform.SetParent(TowerContainer.Hardpoint);
+                    SetParrentToObject(Instantiate(TowerContainer.Level1Mesh));
                     break;
                 case 2:
-                    Instantiate(TowerContainer.Level2Mesh).transform.SetParent(TowerContainer.Hardpoint);
+                    SetParrentToObject(Instantiate(TowerContainer.Level2Mesh));
                     break;
                 case 3:
-                    Instantiate(TowerContainer.Level3Mesh).transform.SetParent(TowerContainer.Hardpoint);
+                    SetParrentToObject(Instantiate(TowerContainer.Level3Mesh));
                     break;
             }
+        }
+
+        private void SetParrentToObject(GameObject go)
+        {
+            go.transform.SetParent(TowerContainer.Hardpoint);
+            go.transform.localPosition = Vector3.zero;
+            go.transform.localRotation = new Quaternion(0,0,0,0);
+            go.transform.localScale = Vector3.one;
         }
 
         public void SelfDestroy()
