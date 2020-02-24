@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,9 +11,10 @@ namespace fckingCODE
 
         private float _spawnCooldown;
 
+        private Coroutine _cdCoroutine;
+
         private void Awake()
         {
-            _spawnCooldown = Container.SpawnCooldown;
             GenerateEnemyInPosition();
         }
 
@@ -28,21 +28,30 @@ namespace fckingCODE
             return false;
         }
 
-        private void OnTriggerStay(Collider other)
+        private void Update()
         {
-            if (other.gameObject.layer != 11) return;
-            StartCoroutine(CooldownCounter(Container.SpawnCooldown));
-            if (_spawnCooldown>0) return;
-            _spawnCooldown = Container.SpawnCooldown;
-            foreach (var rageObjectSpawnPoint in Container.EnemySpawnPoints)
+            
+            if (Vector3.Distance(transform.position, Container.Spawner.Player.transform.position) < 33)
             {
-                if (Container.EnemyWeight.Evaluate(Random.Range(0f,1f))>0.5)
+                Debug.Log(Vector3.Distance(transform.position, Container.Spawner.Player.transform.position));
+                if (_spawnCooldown>0) return;
+                foreach (var rageObjectSpawnPoint in Container.EnemySpawnPoints)
                 {
-                    Container.Spawner.SpawnEnemy(1, rageObjectSpawnPoint);
+                    if (Container.EnemyWeight.Evaluate(Random.Range(0f,1f))>0.5)
+                    {
+                        Container.Spawner.SpawnEnemy(1, rageObjectSpawnPoint);
+                    }
                 }
+                
+                if (_cdCoroutine != null)
+                {
+                    StopCoroutine(_cdCoroutine);
+                }
+                _spawnCooldown = Container.SpawnCooldown;
+                _cdCoroutine = StartCoroutine(CooldownCounter(Container.SpawnCooldown));
             }
         }
-
+        
         private IEnumerator CooldownCounter(float time)
         {
             yield return new WaitForSeconds(time);
