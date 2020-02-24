@@ -152,6 +152,7 @@ namespace fckingCODE
         {
             if (_tower == null) return;
             var towerController = _tower.GetComponent<TowerController>();
+            
             Controller.UpdateTowerController(towerController);
             Controller.UpdateMassDif();
             towerController.IsActive = true;
