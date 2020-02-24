@@ -726,7 +726,6 @@ GameObject:
   - component: {fileID: 4310742255019290255}
   - component: {fileID: 9042381841063885024}
   - component: {fileID: 1574142080501365059}
-  - component: {fileID: 1130779265}
   - component: {fileID: 3921724461284998990}
   - component: {fileID: 1835927433}
   m_Layer: 11
@@ -765,7 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4fdcae9063f5e64abe2719bc3a4be16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySpawner: {fileID: 1130779265}
+  EnemySpawner: {fileID: 0}
   HitPoints: 10000
   Rage: 0
   TowerCoast: 2
@@ -845,21 +844,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1130779265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5592800169562306257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90da2d4a43d05704cad171e59527ac21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 4310742255019290255}
-  spawnsSpeed: 3
-  doSpawns: 0
 --- !u!65 &3921724461284998990
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -883,7 +867,7 @@ Animator:
   m_GameObject: {fileID: 5592800169562306257}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b6704075643873b42ba38c5d84a352ce, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
