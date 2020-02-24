@@ -307,7 +307,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 995122853}
   m_FillRect: {fileID: 984670396}
   m_HandleRect: {fileID: 995122852}
@@ -940,10 +940,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Chunks:
+  - {fileID: 1048082490541203250, guid: a923b84b7d57a1f468499424c73d72d2, type: 3}
   - {fileID: 1048082490541203250, guid: a2771f6bf2c69d942aa2017af6514a50, type: 3}
-  - {fileID: 1048082490541203250, guid: 2347c540bad2fbd41b8ffb66ffc683be, type: 3}
   - {fileID: 1048082490541203250, guid: 115afe2ee60752e4593836e5d4c4872e, type: 3}
   - {fileID: 1048082490541203250, guid: 83b6c9036d48f6544a09f6533909bdcc, type: 3}
+  - {fileID: 1048082490541203250, guid: 2347c540bad2fbd41b8ffb66ffc683be, type: 3}
   Player: {fileID: 6321859806756224153}
   SpawnsSpeed: 3
   doSpawns: 0
@@ -1239,11 +1240,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9042381841063885024, guid: 5ca5e225446368749a15a3c3373fe659,
         type: 3}
-      propertyPath: EnemySpawner
-      value: 
-      objectReference: {fileID: 1560679350}
-    - target: {fileID: 9042381841063885024, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
       propertyPath: GameOverImage
       value: 
       objectReference: {fileID: 1314219601}
@@ -1257,6 +1253,26 @@ PrefabInstance:
       propertyPath: RageDisplay
       value: 
       objectReference: {fileID: 151138163}
+    - target: {fileID: 9042381841063885024, guid: 5ca5e225446368749a15a3c3373fe659,
+        type: 3}
+      propertyPath: EnemySpawner
+      value: 
+      objectReference: {fileID: 1560679350}
+    - target: {fileID: 9042381841063885024, guid: 5ca5e225446368749a15a3c3373fe659,
+        type: 3}
+      propertyPath: Speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042381841063885024, guid: 5ca5e225446368749a15a3c3373fe659,
+        type: 3}
+      propertyPath: TowerCoast
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042381841063885024, guid: 5ca5e225446368749a15a3c3373fe659,
+        type: 3}
+      propertyPath: Rage
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ca5e225446368749a15a3c3373fe659, type: 3}
 --- !u!4 &6321859806756224153 stripped
