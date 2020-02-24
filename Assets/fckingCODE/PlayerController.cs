@@ -18,6 +18,10 @@ namespace fckingCODE
         private Coroutine _coroutine;
         private float _massDif;
 
+        private void Awake()
+        {
+            InstantiateTower(0);
+        }
 
         private void Update()
         {
