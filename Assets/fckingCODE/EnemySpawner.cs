@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Object = UnityEngine.Object;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace fckingCODE
@@ -10,8 +10,8 @@ namespace fckingCODE
     {
         public List<GameObject> Chunks;
         
-        public Transform player;
-        public float spawnsSpeed;
+        [FormerlySerializedAs("player")] public Transform Player;
+        [FormerlySerializedAs("spawnsSpeed")] public float SpawnsSpeed;
         public bool doSpawns;
 
         [NonSerialized]
@@ -24,16 +24,38 @@ namespace fckingCODE
         {
             Enemyes = new List<GameObject>();
             doSpawns = true;
-            _timeCounter = spawnsSpeed;
-            
-            SpawnNewChunk(Vector3.zero);
+            _timeCounter = SpawnsSpeed;
+            foreach (var chunk in Chunks)
+            {
+                chunk.GetComponent<ChunkContainer>().Spawner = this;
+            }
+            SpawnNewChunk(0);
         }
 
-        public void SpawnNewChunk(Vector3 position)
+        private void Update()
         {
-            int index = Random.Range(0, 2); 
-            var newChunk = Object.Instantiate(Chunks[index], transform, true);
-            newChunk.transform.position = position;
+            if (Player.transform.position.z > 5)
+            {
+                foreach (Transform child in transform)
+                {
+                    var pos = child.position;
+                    pos.z -= 100;
+                    child.position = pos;
+                }
+                
+                foreach (var chu in _currentChunksList)
+                {
+                    chu.GetComponent<ChunkController>().CheckDistance(Player.position);
+                }
+                
+                SpawnNewChunk(Random.Range(0, Chunks.Count));
+            }
+        }
+
+        public void SpawnNewChunk(int index)
+        {
+            var newChunk = Instantiate(Chunks[index], transform, true);
+            newChunk.transform.parent = transform;
 
             var container = newChunk.GetComponent<ChunkContainer>();
             container.Spawner = this;
@@ -44,7 +66,7 @@ namespace fckingCODE
         public void SpawnEnemy(int enemyIndex, Transform enemyPosition)
         {
             var newEnemy =  EnemyFactory.Spawn(enemyIndex, enemyPosition.position);
-            newEnemy.GetComponent<EnemyController>().Init(this, player);
+            newEnemy.GetComponent<EnemyController>().Init(this, Player);
             newEnemy.transform.parent = enemyPosition;
             
             if (enemyIndex!=3)

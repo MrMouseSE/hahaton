@@ -12,6 +12,20 @@ namespace fckingCODE
             GenerateEnemyInPosition();
         }
 
+        public void CheckDistance(Vector3 position)
+        {
+            if (Vector3.Distance(position, transform.position) > 100)
+            {
+                SelfDestroy();
+            }
+        }
+
+        private void SelfDestroy()
+        {
+            Destroy(this);
+        }
+
+
         private void GenerateEnemyInPosition()
         {
             foreach (var rageObjectSpawnPoint in Container.RageObjectSpawnPoints)
@@ -30,13 +44,13 @@ namespace fckingCODE
                 }
             }
             
-            /*foreach (var rageObjectSpawnPoint in Container.EnemySpawnPoints)
+            foreach (var rageObjectSpawnPoint in Container.EnemySpawnPoints)
             {
                 if (Container.EnemyWeight.Evaluate(Random.Range(0f,1f))>0.5)
                 {
                     Container.Spawner.SpawnEnemy(1, rageObjectSpawnPoint);
                 }
-            }*/
+            }
         }
     }
 }

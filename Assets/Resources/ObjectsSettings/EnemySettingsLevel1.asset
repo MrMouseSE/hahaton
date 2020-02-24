@@ -20,4 +20,4 @@ MonoBehaviour:
   EnemyHitPoints: {x: 10, y: 10}
   EnemyDamage: {x: 10, y: 10}
   EnemySpeed: {x: 10, y: 10}
-  EnemyRage: {x: 55, y: 55}
+  EnemyRage: {x: 1, y: 1}

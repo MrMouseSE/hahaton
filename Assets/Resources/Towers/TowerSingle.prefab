@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TowerType: 0
   BulletPosition: {fileID: 3560715916739874523}
-  Bullet: {fileID: 9046852193139781540, guid: 875d7d428bbd9bf4b89f4041ff5ad9a9, type: 3}
+  Bullet: {fileID: 4818410613281437405, guid: 000ad783c52ccb14681b04016fdf2744, type: 3}
   FireRate: 1
   Damage: 1
   Mass: 1

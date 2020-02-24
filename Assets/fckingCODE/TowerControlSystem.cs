@@ -100,6 +100,8 @@ namespace fckingCODE
             }
             else
             {
+                tower.enabled = true;
+                Controller.Container.TrunkController.SetTrigger("Close");
                 if (newTowerPosition.transform.childCount > 0)
                 {
                     UpgradeTower(newTowerPosition.transform.GetChild(0).gameObject);
@@ -115,7 +117,6 @@ namespace fckingCODE
         {
             var container = towerToUpgrade.GetComponent<TowerContainer>();
             container.Level++;
-            
 
             var upgradeSettings = GetTowerUprgadeSettings(_tower.GetComponent<TowerContainer>().TowerType);
 
@@ -155,9 +156,11 @@ namespace fckingCODE
             
             Controller.UpdateTowerController(towerController);
             Controller.UpdateMassDif();
-            towerController.IsActive = true;
-            _tower.transform.position = towerPosition.transform.position;
             _tower.transform.parent = towerPosition.transform;
+            _tower.transform.rotation = Quaternion.Euler(0,0,0);
+            _tower.transform.position = towerPosition.transform.position;
+            _tower.transform.localScale = Vector3.one;
+            
             _hasTower = false;
         }
     }
