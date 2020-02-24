@@ -92,6 +92,8 @@ namespace fckingCODE
         private void SetTower(GameObject newTowerPosition)
         {
             var tower = _tower.GetComponent<TowerController>();
+            
+            Controller.Container.TrunkController.SetTrigger("Close");
             Controller.UpdateRageValue(-tower.TowerRageCoast);
             tower.TowerRageCoast = 0;
             if (newTowerPosition == _towerPosition)
