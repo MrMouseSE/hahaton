@@ -92,8 +92,8 @@ MonoBehaviour:
   BulletPosition: {fileID: 4599013915388352154}
   Bullet: {fileID: 6933178959809565685, guid: 8d5f9328161d4e94ab7ae437473be9e9, type: 3}
   FireRate: 1
-  Damage: 1
-  Mass: 1
+  Damage: 5
+  Mass: 1.5
   Level: 1
   Level1Mesh: {fileID: 338786131407277618, guid: de89aec3be8939f49893b31b2a02aefb,
     type: 3}

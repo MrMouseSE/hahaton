@@ -91,8 +91,8 @@ MonoBehaviour:
   TowerType: 0
   BulletPosition: {fileID: 3560715916739874523}
   Bullet: {fileID: 4818410613281437405, guid: 000ad783c52ccb14681b04016fdf2744, type: 3}
-  FireRate: 1
-  Damage: 1
+  FireRate: 1.2
+  Damage: 3
   Mass: 1
   Level: 1
   Level1Mesh: {fileID: 513484465741384599, guid: 4b853c464bcb7c642abafdfcc062c26f,

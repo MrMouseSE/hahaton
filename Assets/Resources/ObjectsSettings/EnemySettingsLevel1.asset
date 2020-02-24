@@ -17,7 +17,7 @@ MonoBehaviour:
   - {fileID: 107531930254385688, guid: 57892f755f584a446ad06a92a1891d22, type: 3}
   - {fileID: 1256105667755962375, guid: 326f6782f90632a4187057f60824454c, type: 3}
   - {fileID: 6316108951006213676, guid: 0911720410a4c5c4cb7384c558a37432, type: 3}
-  EnemyHitPoints: {x: 10, y: 10}
-  EnemyDamage: {x: 10, y: 10}
+  EnemyHitPoints: {x: 7, y: 25}
+  EnemyDamage: {x: 5, y: 10}
   EnemySpeed: {x: 4, y: 6}
-  EnemyRage: {x: 1, y: 1}
+  EnemyRage: {x: 10, y: 15}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994b93d014fa580419090397fefbd405, type: 3}
   m_Name: SingleTowerUpgradeSettings
   m_EditorClassIdentifier: 
-  ChangeFireRate: 1
-  ChangeDamage: 1
-  ChangeMass: 1
+  ChangeFireRate: 0.1
+  ChangeDamage: 3
+  ChangeMass: 0.1

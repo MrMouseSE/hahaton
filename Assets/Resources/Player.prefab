@@ -1118,14 +1118,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemySpawner: {fileID: 0}
-  HitPoints: 10000
+  HitPoints: 100
   Rage: 0
   TowerCoast: 15
   Speed: 3
   Mesh: {fileID: 8998202122088717604}
-  RotateAngle: 5
+  RotateAngle: 7
   RollAngle: 5
-  SideSpeed: 1
+  SideSpeed: 0.8
   TowerPlaces:
   - {fileID: 5076601828576603365}
   - {fileID: 5973219862265535116}
