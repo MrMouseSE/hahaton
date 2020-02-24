@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace fckingCODE
@@ -22,7 +23,13 @@ namespace fckingCODE
         public void OnMouseDown()
         {
             var towerPosition = GetCastTarget();
+            /*
+            List<GameObject> towers = Controller.Container.TowerPlaces;
             
+            towers.Add(Controller.Container.NewTowerPlace.gameObject);
+
+            towerPosition = FindNearest.FindNearestObject(towerPosition.transform, towers);
+            */
             if (towerPosition != null)
             {
                 _tower = GetTower(towerPosition);
@@ -51,7 +58,6 @@ namespace fckingCODE
 
             if (Physics.Raycast(ray, out hitInfo, 1000f, 1<<9))
             {
-                Debug.Log("target " + hitInfo.transform.gameObject);
                 return hitInfo.transform.gameObject;
             }
 
@@ -71,8 +77,11 @@ namespace fckingCODE
 
         private void OnMouseUp()
         {
-            var newTowerPosition = GetCastTarget();
-            if (newTowerPosition != Controller.Container.NewTowerPlace)
+            var newTowerPosition = FindNearest.FindNearestObject(_tower.transform, Controller.Container.TowerPlaces);
+            
+            //var newTowerPosition = GetCastTarget();
+            Debug.Log("Target " + newTowerPosition);
+            if (newTowerPosition.transform != Controller.Container.NewTowerPlace)
             {
                 _tower.GetComponent<TowerController>().enabled = true;
             }
@@ -101,6 +110,7 @@ namespace fckingCODE
                 tower.enabled = true;
                 Controller.Container.NewTowerPlace.gameObject.SetActive(false);
                 Controller.Container.TrunkController.SetTrigger("Close");
+                Controller.IsBusy = false;
                 if (newTowerPosition.transform.childCount > 0)
                 {
                     UpgradeTower(newTowerPosition.transform.GetChild(0).gameObject);
