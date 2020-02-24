@@ -77,7 +77,6 @@ namespace fckingCODE
                 Destroy(TowerContainer.Hardpoint.GetChild(0).gameObject);
             }
 
-            GameObject inst;
             switch (TowerContainer.Level)
             {
                 case 1:

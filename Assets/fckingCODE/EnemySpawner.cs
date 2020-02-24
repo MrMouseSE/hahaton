@@ -16,7 +16,15 @@ namespace fckingCODE
 
         [NonSerialized]
         public List<GameObject> Enemyes;
-        
+
+        private int _level;
+
+        public int Level
+        {
+            get => _level;
+            set => _level = value;
+        }
+
         private float _timeCounter;
         private List<GameObject> _currentChunksList = new List<GameObject>();
         
@@ -78,7 +86,7 @@ namespace fckingCODE
 
         public void SpawnEnemy(int enemyIndex, Transform enemyPosition)
         {
-            var newEnemy =  EnemyFactory.Spawn(enemyIndex, enemyPosition.position);
+            var newEnemy =  EnemyFactory.Spawn(enemyIndex, enemyPosition.position,_level);
             newEnemy.GetComponent<EnemyController>().Init(this, Player);
             newEnemy.transform.parent = enemyPosition;
             

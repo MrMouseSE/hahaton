@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace fckingCODE
@@ -107,10 +105,14 @@ namespace fckingCODE
             }
             else
             {
-                tower.enabled = true;
-                Controller.Container.NewTowerPlace.gameObject.SetActive(false);
-                Controller.Container.TrunkController.SetTrigger("Close");
-                Controller.IsBusy = false;
+                if (Controller.IsBusy)
+                {
+                    tower.enabled = true;
+                    Controller.Container.NewTowerPlace.gameObject.SetActive(false);
+                    Controller.Container.TrunkController.SetTrigger("Close");
+                    Controller.IsBusy = false;
+                }
+                
                 if (newTowerPosition.transform.childCount > 0)
                 {
                     UpgradeTower(newTowerPosition.transform.GetChild(0).gameObject);

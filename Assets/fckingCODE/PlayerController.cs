@@ -112,6 +112,7 @@ namespace fckingCODE
 
         private void InstantiateTower(int towerID)
         {
+            Container.EnemySpawner.Level++;
             if(_isBusy) return;
             Container.NewTowerPlace.gameObject.SetActive(true);
             Container.TrunkController.SetTrigger("Open");
@@ -123,6 +124,7 @@ namespace fckingCODE
             towerController.enabled = false;
             SetTowerPlace(tower.transform);
             _isBusy = true;
+            Debug.Log("is busy :" + _isBusy);
         }
 
         public void UpdateTowerController(TowerController towerController, bool remove = false)

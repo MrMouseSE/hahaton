@@ -14,26 +14,25 @@ namespace fckingCODE
         private static GameObject _obstacle = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/Obstacle.prefab");
         private static Vector3 _spawnPosition;
 
-        public static GameObject Spawn(int index, Vector3 position)
+        public static GameObject Spawn(int index, Vector3 position, int level)
         {
             _spawnPosition = position;
             switch (index)
             {
                 case 1:
-                    return SpawnEnemy(_enemySettingsContainer.EnemySettings,_enemy);
+                    return SpawnEnemy(_enemySettingsContainer.EnemySettings,_enemy,level);
                 case 2:
-                    return SpawnEnemy(_enemySettingsContainer.ObstacleSettings,_obstacle);
+                    return SpawnEnemy(_enemySettingsContainer.ObstacleSettings,_obstacle,level);
                 case 3:
-                    return SpawnEnemy(_enemySettingsContainer.RageItemSettings,_rageItem);
+                    return SpawnEnemy(_enemySettingsContainer.RageItemSettings,_rageItem,level);
             }
 
             return null;
         }
 
-        private static GameObject SpawnEnemy(List<EnemySettings> enemySettings, GameObject inst)
+        private static GameObject SpawnEnemy(List<EnemySettings> enemySettings, GameObject inst,int level)
         {
-            var level = 1;
-            var settings = GetLevelSettings(level,enemySettings);
+            var settings = GetLevelSettings(1,enemySettings);
             
             GameObject enemy = Object.Instantiate(inst, _spawnPosition, Quaternion.identity);
             enemy.SetActive(true);
