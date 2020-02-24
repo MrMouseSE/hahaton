@@ -1,51 +1,78 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace fckingCODE
 {
     public class EnemySpawner : MonoBehaviour
     {
-        [NonSerialized]
-        public List<GameObject> Enemyes;
-        public Transform player;
-        public float spawnsSpeed;
+        public List<GameObject> Chunks;
+        
+        [FormerlySerializedAs("player")] public Transform Player;
+        [FormerlySerializedAs("spawnsSpeed")] public float SpawnsSpeed;
         public bool doSpawns;
 
+        [NonSerialized]
+        public List<GameObject> Enemyes;
+        
         private float _timeCounter;
+        private List<GameObject> _currentChunksList = new List<GameObject>();
         
         private void Awake()
         {
             Enemyes = new List<GameObject>();
             doSpawns = true;
-            _timeCounter = spawnsSpeed;
+            _timeCounter = SpawnsSpeed;
+            foreach (var chunk in Chunks)
+            {
+                chunk.GetComponent<ChunkContainer>().Spawner = this;
+            }
+            SpawnNewChunk(0);
         }
 
         private void Update()
         {
-            if (doSpawns == false) return;
-            
-            _timeCounter -= Time.deltaTime;
-            if (_timeCounter <= 0.0f)
+            if (Player.transform.position.z > 5)
             {
-                SpawnEnemy();
-                _timeCounter = spawnsSpeed;
+                foreach (Transform child in transform)
+                {
+                    var pos = child.position;
+                    pos.z -= 100;
+                    child.position = pos;
+                }
+                
+                foreach (var chu in _currentChunksList)
+                {
+                    chu.GetComponent<ChunkController>().CheckDistance(Player.position);
+                }
+                
+                SpawnNewChunk(Random.Range(0, Chunks.Count));
             }
         }
 
-        private void SpawnEnemy()
+        public void SpawnNewChunk(int index)
         {
-            var position = GetNewEnemyPosition();
-            var newEnemy =  EnemyFactory.Spawn(1, position);
-            //newEnemy.transform.position = GetNewEnemyPosition();
-            newEnemy.GetComponent<EnemyController>().Init(this, player);
-            Enemyes.Add(newEnemy);
+            var newChunk = Instantiate(Chunks[index], transform, true);
+            newChunk.transform.parent = transform;
+
+            var container = newChunk.GetComponent<ChunkContainer>();
+            container.Spawner = this;
+            
+            _currentChunksList.Add(newChunk);
         }
 
-        private Vector3 GetNewEnemyPosition()
+        public void SpawnEnemy(int enemyIndex, Transform enemyPosition)
         {
-            return new Vector3(Random.Range(-10f, 10f),0,-10);
+            var newEnemy =  EnemyFactory.Spawn(enemyIndex, enemyPosition.position);
+            newEnemy.GetComponent<EnemyController>().Init(this, Player);
+            newEnemy.transform.parent = enemyPosition;
+            
+            if (enemyIndex!=3)
+            {
+                Enemyes.Add(newEnemy);    
+            }
         }
     }
 }

@@ -111,8 +111,8 @@ namespace fckingCODE
 
             towerController.TowerRageCoast = Container.TowerCoast;
             towerController.TowerContainer.EnemySpawner = Container.EnemySpawner;
-            towerController.IsActive = false;
-            tower.transform.position = GetTowerPlace(tower.transform);
+            towerController.enabled = false;
+            SetTowerPlace(tower.transform);
         }
 
         public void UpdateTowerController(TowerController towerController, bool remove = false)
@@ -127,15 +127,14 @@ namespace fckingCODE
             }
         }
 
-        private Vector3 GetTowerPlace(Transform transform)
+        private void SetTowerPlace(Transform transform)
         {
             var placeTransform = Container.NewTowerPlace;
             if (placeTransform != null)
             {
                 transform.parent = placeTransform;
-                return placeTransform.position;
+                transform.position = placeTransform.position;
             }
-            return Vector3.one;
         }
 
         private IEnumerator MassEffectAppend(float angle)

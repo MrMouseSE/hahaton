@@ -56,6 +56,7 @@ namespace fckingCODE
             bulletContainer.Damage = TowerContainer.Damage;
             bullet.transform.position = TowerContainer.BulletPosition.position;
             bullet.transform.LookAt(_target.GetComponent<EnemyContainer>().RootPosition);
+            bullet.transform.parent = GameObject.FindGameObjectWithTag("Chunk").transform;
             _cooldown = true;
             StartCoroutine(CooldownCounter());
         }
