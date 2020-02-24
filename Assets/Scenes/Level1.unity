@@ -1240,6 +1240,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9042381841063885024, guid: 5ca5e225446368749a15a3c3373fe659,
         type: 3}
+      propertyPath: EnemySpawner
+      value: 
+      objectReference: {fileID: 1560679350}
+    - target: {fileID: 9042381841063885024, guid: 5ca5e225446368749a15a3c3373fe659,
+        type: 3}
       propertyPath: GameOverImage
       value: 
       objectReference: {fileID: 1314219601}
@@ -1253,26 +1258,6 @@ PrefabInstance:
       propertyPath: RageDisplay
       value: 
       objectReference: {fileID: 151138163}
-    - target: {fileID: 9042381841063885024, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: EnemySpawner
-      value: 
-      objectReference: {fileID: 1560679350}
-    - target: {fileID: 9042381841063885024, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: Speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9042381841063885024, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: TowerCoast
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 9042381841063885024, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: Rage
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ca5e225446368749a15a3c3373fe659, type: 3}
 --- !u!4 &6321859806756224153 stripped
