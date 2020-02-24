@@ -20,18 +20,12 @@ namespace fckingCODE
 
         private void Update()
         {
-            if (_target == null)
+            FindTarget();
+            if (!_cooldown)
             {
-                FindTarget();
-            }
-            else
-            {
-                if (!_cooldown)
+                if (_target != null)
                 {
-                    if (_target != null)
-                    {
-                        FireAction();
-                    }
+                    FireAction();
                 }
             }
         }

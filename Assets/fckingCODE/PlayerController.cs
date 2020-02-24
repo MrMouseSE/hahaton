@@ -33,7 +33,7 @@ namespace fckingCODE
         {
             var obj = other.gameObject;
             
-            if (obj.layer != 1) return;
+            if (obj.layer != 0) return;
             var enemy = obj.GetComponent<EnemyContainer>();
             TakeEnemyEffect(enemy);
         }
