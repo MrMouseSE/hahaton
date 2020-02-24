@@ -18,6 +18,14 @@ namespace fckingCODE
         private Coroutine _coroutine;
         private float _massDif;
 
+        private bool _isBusy;
+
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set => _isBusy = value;
+        }
+
         private void Awake()
         {
             InstantiateTower(0);
@@ -104,6 +112,7 @@ namespace fckingCODE
 
         private void InstantiateTower(int towerID)
         {
+            if(_isBusy) return;
             Container.NewTowerPlace.gameObject.SetActive(true);
             Container.TrunkController.SetTrigger("Open");
             var tower = Instantiate(Container.Towers[towerID]);
@@ -113,6 +122,7 @@ namespace fckingCODE
             towerController.TowerContainer.EnemySpawner = Container.EnemySpawner;
             towerController.enabled = false;
             SetTowerPlace(tower.transform);
+            _isBusy = true;
         }
 
         public void UpdateTowerController(TowerController towerController, bool remove = false)
