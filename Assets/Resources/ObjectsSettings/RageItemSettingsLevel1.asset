@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8a54394cd425eb44b515c53e87a8d48, type: 3}
   m_Name: RageItemSettingsLevel1
   m_EditorClassIdentifier: Assembly-CSharp:fckingCODE:EnemySettings
-  EnemyLevel: 0
+  EnemyLevel: 1
   EnemyObjects:
-  - {fileID: 107531930254385688, guid: 57892f755f584a446ad06a92a1891d22, type: 3}
-  - {fileID: 107531930254385688, guid: 57892f755f584a446ad06a92a1891d22, type: 3}
+  - {fileID: 162168, guid: 2db03e7c8a8135146b280e5da7e0289c, type: 3}
+  - {fileID: 152384, guid: 6fb37f825ee63264b9c2600bf1a52006, type: 3}
+  - {fileID: 119000, guid: 907fd825e3988774caab4234b943bf44, type: 3}
+  - {fileID: 108018, guid: 47a3741b253f088469eedd6d403dd89a, type: 3}
+  - {fileID: 108542, guid: 14fb53f2cd63dc748a001cc7b31bf21d, type: 3}
   EnemyHitPoints: {x: 0, y: 0}
   EnemyDamage: {x: 0, y: 0}
   EnemySpeed: {x: 0, y: 0}
-  EnemyRage: {x: 0, y: 0}
+  EnemyRage: {x: 10, y: 20}

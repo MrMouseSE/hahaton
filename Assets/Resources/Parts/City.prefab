@@ -4290,7 +4290,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  RageObjectSpawnPoints: []
+  RageObjectSpawnPoints:
+  - {fileID: 835231357569331001}
+  - {fileID: 1404477945187255886}
+  - {fileID: 7105054333156094190}
   ObstaclesWeight:
     serializedVersion: 2
     m_Curve:
@@ -4315,10 +4318,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ObstaclesSpawnPoints:
-  - {fileID: 835231357569331001}
-  - {fileID: 1404477945187255886}
-  - {fileID: 7105054333156094190}
+  ObstaclesSpawnPoints: []
   EnemyWeight:
     serializedVersion: 2
     m_Curve:

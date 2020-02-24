@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4058299982805171045}
   - component: {fileID: 4280778133712830304}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: RageItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,6 +81,7 @@ MonoBehaviour:
   Damage: 1
   Speed: 0.5
   Rage: 0
+  IsStatic: 1
 --- !u!65 &4058299982805171045
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -361,6 +362,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000013313792356, guid: acf39d9f4addf294d93fa56fa373961b,
+        type: 3}
+      propertyPath: LightsModule.light
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 198014128099786538, guid: acf39d9f4addf294d93fa56fa373961b,
         type: 3}
