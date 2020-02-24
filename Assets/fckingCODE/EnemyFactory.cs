@@ -42,10 +42,12 @@ namespace fckingCODE
             container.Speed = GetRandomValue(settings.EnemySpeed);
             container.Rage = GetRandomValue(settings.EnemyRage);;
 
-            var meshRendere = container.RootPosition.gameObject.GetComponent<MeshFilter>();
-            var meshIndex = GetRandomValue(new Vector2(0, settings.EnemyMeshes.Count));
-            meshRendere.mesh = settings.EnemyMeshes[meshIndex];
             
+            var enemyIndex = GetRandomValue(new Vector2(0, settings.EnemyObjects.Count));
+                
+            GameObject enemyObject = Object.Instantiate(settings.EnemyObjects[enemyIndex], container.RootPosition, true);
+            enemyObject.transform.position = container.RootPosition.position;
+
             return enemy;
         }
 

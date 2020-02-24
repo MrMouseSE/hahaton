@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: EnemySettingsLevel1
   m_EditorClassIdentifier: Assembly-CSharp:fckingCODE:EnemySettings
   EnemyLevel: 1
-  EnemyMeshes:
-  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  - {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  EnemyObjects:
+  - {fileID: 107531930254385688, guid: 57892f755f584a446ad06a92a1891d22, type: 3}
+  - {fileID: 1256105667755962375, guid: 326f6782f90632a4187057f60824454c, type: 3}
+  - {fileID: 6316108951006213676, guid: 0911720410a4c5c4cb7384c558a37432, type: 3}
   EnemyHitPoints: {x: 10, y: 10}
   EnemyDamage: {x: 10, y: 10}
   EnemySpeed: {x: 10, y: 10}
-  EnemyRage: {x: 0, y: 0}
+  EnemyRage: {x: 55, y: 55}
