@@ -33,7 +33,6 @@ namespace fckingCODE
             
             if (Vector3.Distance(transform.position, Container.Spawner.Player.transform.position) < 33)
             {
-                Debug.Log(Vector3.Distance(transform.position, Container.Spawner.Player.transform.position));
                 if (_spawnCooldown>0) return;
                 foreach (var rageObjectSpawnPoint in Container.EnemySpawnPoints)
                 {

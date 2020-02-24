@@ -12,7 +12,6 @@ namespace fckingCODE
 
         public float TowerRageCoast { get; set; } = 0;
 
-        public bool IsActive { get; set; }
         
         private void Awake()
         {
@@ -21,7 +20,6 @@ namespace fckingCODE
 
         private void Update()
         {
-            if (!IsActive) return;
             if (_target == null)
             {
                 FindTarget();
@@ -63,9 +61,9 @@ namespace fckingCODE
 
         private void FindTarget()
         {
-                var enemyes = TowerContainer.EnemySpawner.Enemyes;
-                if (enemyes.Count == 0) return;
-                _target = FindNearest.FindNearestObject(transform, enemyes);
+            var enemyes = TowerContainer.EnemySpawner.Enemyes;
+            if (enemyes.Count == 0) return;
+            _target = FindNearest.FindNearestObject(transform, enemyes);
         }
 
         private IEnumerator CooldownCounter()

@@ -38,7 +38,7 @@ namespace fckingCODE
                 RaycastHit hitInfo;
                 if (Physics.Raycast(ray, out hitInfo, 1000f, 1<<10))
                 {
-                    _tower.GetComponent<TowerController>().IsActive = false;
+                    _tower.GetComponent<TowerController>().enabled = false;
                     _tower.transform.position = hitInfo.point;
                 }
             }
@@ -71,16 +71,20 @@ namespace fckingCODE
 
         private void OnMouseUp()
         {
-                var newTowerPosition = GetCastTarget();
+            var newTowerPosition = GetCastTarget();
+            if (newTowerPosition != Controller.Container.NewTowerPlace)
+            {
+                _tower.GetComponent<TowerController>().enabled = true;
+            }
 
-                if (newTowerPosition != null)
-                {
-                    SetTower(newTowerPosition);
-                }
-                else
-                {
-                    SetTower(_towerPosition);    
-                }
+            if (newTowerPosition != null)
+            {
+                SetTower(newTowerPosition);
+            }
+            else
+            {
+                SetTower(_towerPosition);    
+            }
         }
 
         private void SetTower(GameObject newTowerPosition)
@@ -112,6 +116,7 @@ namespace fckingCODE
         {
             var container = towerToUpgrade.GetComponent<TowerContainer>();
             container.Level++;
+            towerToUpgrade.GetComponent<TowerController>().UpdateTowerView();
 
             var upgradeSettings = GetTowerUprgadeSettings(_tower.GetComponent<TowerContainer>().TowerType);
 
