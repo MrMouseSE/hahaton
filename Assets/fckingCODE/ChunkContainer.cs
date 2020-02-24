@@ -6,6 +6,7 @@ namespace fckingCODE
     public class ChunkContainer : MonoBehaviour
     {
         public EnemySpawner Spawner;
+        public float SpawnCooldown;
         
         [Space]
         public AnimationCurve RageObjectWeight;

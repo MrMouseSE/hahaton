@@ -30,6 +30,8 @@ namespace fckingCODE
             {
                 SelfDestruction();
             }
+
+            if (_enemyContainer.IsStatic) return;
             MoveTo();
         }
         

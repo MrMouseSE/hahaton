@@ -11,5 +11,7 @@ namespace fckingCODE
         public float Damage;
         public float Speed;
         public float Rage;
+
+        public bool IsStatic;
     }
 }

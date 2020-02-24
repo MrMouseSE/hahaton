@@ -20,6 +20,7 @@ namespace fckingCODE
         private float _timeCounter;
         private List<GameObject> _currentChunksList = new List<GameObject>();
         
+        
         private void Awake()
         {
             Enemyes = new List<GameObject>();
@@ -43,10 +44,20 @@ namespace fckingCODE
                     child.position = pos;
                 }
                 SpawnNewChunk(Random.Range(0, Chunks.Count));
-                
+
+                GameObject removeThis = null;
                 foreach (var chu in _currentChunksList)
                 {
-                    chu.GetComponent<ChunkController>().CheckDistance(Player.position, _currentChunksList);
+                    if (chu.GetComponent<ChunkController>().CheckDistance(Player.position))
+                    {
+                        removeThis = chu;
+                    }
+                }
+
+                if (removeThis!=null)
+                {
+                    _currentChunksList.Remove(removeThis);
+                    Destroy(removeThis);
                 }
                 
             }
