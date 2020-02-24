@@ -73,7 +73,8 @@ namespace fckingCODE
         {
             if (TowerContainer.Hardpoint.childCount > 0)
             {
-                Destroy(TowerContainer.Hardpoint.GetChild(0));
+                Debug.Log("wot");
+                Destroy(TowerContainer.Hardpoint.GetChild(0).gameObject);
             }
 
             GameObject inst;

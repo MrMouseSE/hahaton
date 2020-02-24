@@ -12,7 +12,7 @@ namespace fckingCODE
         public PlayerController Controller;
 
         private GameObject _towerPosition;
-        private GameObject _tower;
+        private GameObject _tower = null;
 
         private TowerUpgradeSettingsContainer _towerUpgradeSettingsContainer;
 
@@ -31,7 +31,6 @@ namespace fckingCODE
         public void MouseDownMethod()
         {
             var towerPosition = GetCastTarget();
-            Debug.LogError("tut padaet :" + towerPosition);
             if (towerPosition != null)
             {
                 _tower = GetTower(towerPosition);
@@ -78,6 +77,7 @@ namespace fckingCODE
 
         private void MouseUpMethod()
         {
+            if (_tower == null) return;
             GameObject newTowerPosition = FindNearest.FindNearestObject(_tower.transform, Controller.Container.TowerPlaces);
             
             //var newTowerPosition = GetCastTarget();
