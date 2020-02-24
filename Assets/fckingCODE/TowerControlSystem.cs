@@ -7,6 +7,7 @@ namespace fckingCODE
     {
         public Camera ControlSystemCamera;
         public Transform NewTowerPosition;
+        public PlayerController Controller;
 
         private bool _hasTower;
         private GameObject _towerPosition;
@@ -42,7 +43,6 @@ namespace fckingCODE
                     _tower.transform.position = hitInfo.point;
                 }
             }
-            //NewTowerPosition.gameObject.SetActive(false);
         }
 
         private GameObject GetCastTarget()
@@ -91,7 +91,9 @@ namespace fckingCODE
 
         private void SetTower(GameObject newTowerPosition)
         {
-            //NewTowerPosition.gameObject.SetActive(true);
+            var tower = _tower.GetComponent<TowerController>();
+            Controller.UpdateRageValue(-tower.TowerRageCoast);
+            tower.TowerRageCoast = 0;
             if (newTowerPosition == _towerPosition)
             {
                 SetNewTower(_towerPosition);
@@ -113,6 +115,7 @@ namespace fckingCODE
         {
             var container = towerToUpgrade.GetComponent<TowerContainer>();
             container.Level++;
+            
 
             var upgradeSettings = GetTowerUprgadeSettings(_tower.GetComponent<TowerContainer>().TowerType);
 
@@ -120,6 +123,8 @@ namespace fckingCODE
             container.Damage += upgradeSettings.ChangeDamage;
             container.Mass += upgradeSettings.ChangeMass;
             
+            Controller.UpdateTowerController(_tower.GetComponent<TowerController>(),true);
+            Controller.UpdateMassDif();
             Destroy(_tower);
             _tower = null;
             _hasTower = false;
@@ -146,7 +151,10 @@ namespace fckingCODE
         private void SetNewTower(GameObject towerPosition)
         {
             if (_tower == null) return;
-            _tower.GetComponent<TowerController>().IsActive = true;
+            var towerController = _tower.GetComponent<TowerController>();
+            Controller.UpdateTowerController(towerController);
+            Controller.UpdateMassDif();
+            towerController.IsActive = true;
             _tower.transform.position = towerPosition.transform.position;
             _tower.transform.parent = towerPosition.transform;
             _hasTower = false;

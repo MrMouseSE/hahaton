@@ -36,6 +36,7 @@ namespace fckingCODE
         private void OnTriggerEnter(Collider other)
         {
             var obj = other.gameObject;
+            if (obj.layer == 10 || obj.layer == 9) return;
             
             if (obj.layer == 8)
             {

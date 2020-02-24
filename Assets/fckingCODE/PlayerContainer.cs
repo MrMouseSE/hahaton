@@ -10,6 +10,8 @@ namespace fckingCODE
         
         [Space]
         public float HitPoints;
+        public float Rage;
+        public float TowerCoast;
 
         public float Speed;
 
@@ -26,5 +28,7 @@ namespace fckingCODE
         [Space]
         public Image GameOverImage;
         public GameObject GameOverButton;
+
+        [Space] public Slider RageDisplay;
     }
 }

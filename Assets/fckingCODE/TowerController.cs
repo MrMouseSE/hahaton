@@ -10,6 +10,8 @@ namespace fckingCODE
         private GameObject _target;
         private bool _cooldown;
 
+        public float TowerRageCoast { get; set; } = 0;
+
         public bool IsActive { get; set; }
         
         private void Awake()

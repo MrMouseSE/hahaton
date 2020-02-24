@@ -2,31 +2,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace fckingCODE
 {
     public class PlayerController : MonoBehaviour
     {
-        public PlayerContainer PlayerContainer;
+        [FormerlySerializedAs("PlayerContainer")] public PlayerContainer Container;
+
+        public AnimationCurve TowerIndexField;
 
         private List<TowerController> _towerControllers = new List<TowerController>();
 
-        public List<TowerController> TowerControllers
-        {
-            get { return _towerControllers; }
-            set { TowerControllers = value; }
-        }
-
         private Coroutine _coroutine;
+        private float _massDif;
 
-        private void Awake()
-        {
-            InstantiateTower(0);
-        }
 
         private void Update()
         {
-            transform.position += transform.forward * PlayerContainer.Speed * Time.deltaTime;
+            transform.position += transform.forward * Container.Speed * Time.deltaTime;
             SideShift();
         }
 
@@ -36,17 +31,33 @@ namespace fckingCODE
             
             if (obj.layer != 8)
             {
-                TakeDamage(obj.GetComponent<EnemyContainer>().Damage);
+                var enemy = obj.GetComponent<EnemyContainer>();
+                TakeEnemyEffect(enemy);
                 return;
             }
             
             SelfDestruction();
         }
 
-        private void TakeDamage(float damage)
+        public void UpdateRageValue(float rage)
         {
-            PlayerContainer.HitPoints -= damage;
-            if (PlayerContainer.HitPoints<= 0)
+            Container.Rage += rage;
+            Container.RageDisplay.value = Container.Rage;
+        }
+
+        private void TakeEnemyEffect(EnemyContainer enemy)
+        {
+            UpdateRageValue(enemy.Rage);
+            Container.HitPoints -= enemy.Damage;
+            if (Container.Rage >= Container.TowerCoast)
+            {
+                InstantiateTower((int)TowerIndexField.Evaluate(Random.Range(0f,1f)));
+            }
+            if (Container.Rage >= 100f)
+            {
+                SelfDestruction();
+            }
+            if (Container.HitPoints<= 0)
             {
                 SelfDestruction();
             }
@@ -54,20 +65,7 @@ namespace fckingCODE
 
         private void SideShift()
         {
-            float angle = 0;
-            float massDif = GetMassDif();
-            float towersMass = GetTowersMass();
-
-            transform.position += transform.right * PlayerContainer.SideSpeed * massDif / towersMass * Time.deltaTime;
-            
-            angle = Mathf.Lerp(0,15f, Math.Abs(massDif/10)) * massDif>0? -1: 1;
-
-            if (_coroutine != null)
-            {
-                StopCoroutine(_coroutine);
-            }
-
-            _coroutine = StartCoroutine(MassEffectAppend(angle));
+            transform.position += transform.right * Container.SideSpeed * _massDif * Time.deltaTime;
         }
 
         private float GetTowersMass()
@@ -81,33 +79,59 @@ namespace fckingCODE
             return mass;
         }
 
-        private float GetMassDif()
+        public void UpdateMassDif()
         {
             float massDif = 0;
-            if (_towerControllers.Count==0) return massDif;
+            if (_towerControllers.Count==0) return;
             foreach (var towerController in _towerControllers)
             {
                 var towerMass = towerController.TowerContainer.Mass;
-                massDif += towerMass * towerController.transform.position.x > transform.position.x ? 1 : -1;
+
+                massDif += towerController.transform.position.x > transform.position.x ? towerMass * 1 : towerMass * -1;
             }
 
-            return massDif;
+            _massDif = massDif;
+            
+            float angle = 0;
+            angle = Mathf.Lerp(0,15f, Math.Abs(_massDif/10)) * (_massDif>0? -1: 1);
+
+            if (_coroutine != null)
+            {
+                StopCoroutine(_coroutine);
+            }
+
+            _coroutine = StartCoroutine(MassEffectAppend(angle));
         }
 
-        public void InstantiateTower(int towerID)
+        private void InstantiateTower(int towerID)
         {
-            var tower = Instantiate(PlayerContainer.Towers[towerID]);
+            var tower = Instantiate(Container.Towers[towerID]);
             var towerController = tower.GetComponent<TowerController>();
 
-            towerController.TowerContainer.EnemySpawner = PlayerContainer.EnemySpawner;
-            _towerControllers.Add(towerController);
+            towerController.TowerRageCoast = Container.TowerCoast;
+            towerController.TowerContainer.EnemySpawner = Container.EnemySpawner;
             towerController.IsActive = false;
             tower.transform.position = GetTowerPlace(tower.transform);
         }
 
+        public void UpdateTowerController(TowerController towerController, bool remove = false)
+        {
+            if (remove)
+            {
+                if (_towerControllers.Contains(towerController))
+                {
+                    _towerControllers.Remove(towerController);
+                }
+            }
+            else
+            {
+                _towerControllers.Add(towerController);
+            }
+        }
+
         private Vector3 GetTowerPlace(Transform transform)
         {
-            var placeTransform = PlayerContainer.NewTowerPlace;
+            var placeTransform = Container.NewTowerPlace;
             if (placeTransform != null)
             {
                 transform.parent = placeTransform;
@@ -118,11 +142,11 @@ namespace fckingCODE
 
         private IEnumerator MassEffectAppend(float angle)
         {
-            while (PlayerContainer.Mesh.transform.rotation != Quaternion.Euler(0,-angle,angle))
+            while (Container.Mesh.transform.rotation != Quaternion.Euler(0,-angle,angle))
             {
                 yield return new WaitForEndOfFrame();
-                PlayerContainer.Mesh.transform.rotation = Quaternion.Lerp(PlayerContainer.Mesh.transform.rotation,
-                    Quaternion.Euler(0, -angle*PlayerContainer.RotateAngle, angle*PlayerContainer.RollAngle), 0.01f);
+                Container.Mesh.transform.rotation = Quaternion.Lerp(Container.Mesh.transform.rotation,
+                    Quaternion.Euler(0, -angle*Container.RotateAngle, angle*Container.RollAngle), 0.01f);
             }
         }
 
@@ -130,8 +154,8 @@ namespace fckingCODE
         {
             var lights = FindObjectsOfType<Light>();
             
-            PlayerContainer.EnemySpawner.doSpawns = false;
-            PlayerContainer.Speed = 0;
+            Container.EnemySpawner.doSpawns = false;
+            Container.Speed = 0;
             
             StartCoroutine(AddAlpha(3, lights));
         }
@@ -145,14 +169,14 @@ namespace fckingCODE
                     light.intensity -= 0.05f;
                 }
                 
-                var alpha = PlayerContainer.GameOverImage.color.a;
+                var alpha = Container.GameOverImage.color.a;
                 alpha += 0.1f;
-                PlayerContainer.GameOverImage.color = new Color(1,1,1,alpha);
+                Container.GameOverImage.color = new Color(1,1,1,alpha);
                 time -= 0.1f;
                 yield return new WaitForEndOfFrame();
             }
 
-            PlayerContainer.GameOverButton.SetActive(true);
+            Container.GameOverButton.SetActive(true);
             gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
