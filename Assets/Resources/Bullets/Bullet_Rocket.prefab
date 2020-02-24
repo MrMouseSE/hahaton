@@ -9269,7 +9269,7 @@ GameObject:
   - component: {fileID: 6887654025841763580}
   - component: {fileID: 3432975762587462130}
   - component: {fileID: 1186754909287629542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet_Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -4713,7 +4713,7 @@ GameObject:
   - component: {fileID: 3526067214144452161}
   - component: {fileID: 23308741364497056}
   - component: {fileID: 7029863891602072376}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet_Gatling
   m_TagString: Untagged
   m_Icon: {fileID: 0}

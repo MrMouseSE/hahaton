@@ -9188,7 +9188,7 @@ GameObject:
   - component: {fileID: 168238490601320038}
   - component: {fileID: 8607124553328000906}
   - component: {fileID: 3796748279114535837}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet_Slow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
