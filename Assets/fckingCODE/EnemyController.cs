@@ -56,8 +56,13 @@ namespace fckingCODE
                 TakeDamage(obj.GetComponent<BulletContainer>().Damage);
                 return;
             }
-            
-            StartCoroutine(SelfDestruction());
+
+            if (obj.layer == 11)
+            {
+                StartCoroutine(SelfDestruction());
+            }
+
+            //StartCoroutine(SelfDestruction());
         }
 
         private void TakeDamage(float damage)
