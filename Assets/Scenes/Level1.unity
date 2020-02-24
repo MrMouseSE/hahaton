@@ -910,6 +910,12 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &1542761461 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3432396107906007651, guid: 5ca5e225446368749a15a3c3373fe659,
+    type: 3}
+  m_PrefabInstance: {fileID: 6321859806756224152}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1560679349
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,6 +926,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1560679351}
   - component: {fileID: 1560679350}
+  - component: {fileID: 1560679352}
   m_Layer: 0
   m_Name: SceneRoot
   m_TagString: Untagged
@@ -963,6 +970,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1560679352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560679349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f7d20cf8ab65d46a5307d30edbbc8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1893662244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,6 +1197,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1560679351}
     m_Modifications:
+    - target: {fileID: 3604464289658127816, guid: 5ca5e225446368749a15a3c3373fe659,
+        type: 3}
+      propertyPath: NewTowerPosition
+      value: 
+      objectReference: {fileID: 1542761461}
     - target: {fileID: 4310742255019290255, guid: 5ca5e225446368749a15a3c3373fe659,
         type: 3}
       propertyPath: m_LocalPosition.x

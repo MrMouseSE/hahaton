@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -20,16 +21,17 @@ namespace fckingCODE
             _towerUpgradeSettingsContainer = AssetDatabase.LoadAssetAtPath<TowerUpgradeSettingsContainer>("Assets/Resources/TowerSettings/TowerUpgradeSettingsContainer.asset");
         }
 
-        public void OnMouseDown()
+        private void Start()
+        {
+            MouseAction.Instance.OnMouseDwn += MouseDownMethod;
+            MouseAction.Instance.OnMouseUp += MouseUpMethod;
+            MouseAction.Instance.OnMouseDrg += MouseDragMethod;
+        }
+
+        public void MouseDownMethod()
         {
             var towerPosition = GetCastTarget();
-            /*
-            List<GameObject> towers = Controller.Container.TowerPlaces;
-            
-            towers.Add(Controller.Container.NewTowerPlace.gameObject);
-
-            towerPosition = FindNearest.FindNearestObject(towerPosition.transform, towers);
-            */
+            Debug.LogError("tut padaet :" + towerPosition);
             if (towerPosition != null)
             {
                 _tower = GetTower(towerPosition);
@@ -37,13 +39,13 @@ namespace fckingCODE
             }
         }
 
-        public void OnMouseDrag()
+        public void MouseDragMethod()
         {
             if (_tower != null)
             {
                 Ray ray = ControlSystemCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hitInfo;
-                if (Physics.Raycast(ray, out hitInfo, 1000f, 1<<10))
+                if (Physics.Raycast(ray, out hitInfo,1000f, 1<<10))
                 {
                     _tower.GetComponent<TowerController>().enabled = false;
                     _tower.transform.position = hitInfo.point;
@@ -60,7 +62,6 @@ namespace fckingCODE
             {
                 return hitInfo.transform.gameObject;
             }
-
             return null;
         }
 
@@ -75,12 +76,11 @@ namespace fckingCODE
             return tower;
         }
 
-        private void OnMouseUp()
+        private void MouseUpMethod()
         {
-            var newTowerPosition = FindNearest.FindNearestObject(_tower.transform, Controller.Container.TowerPlaces);
+            GameObject newTowerPosition = FindNearest.FindNearestObject(_tower.transform, Controller.Container.TowerPlaces);
             
             //var newTowerPosition = GetCastTarget();
-            Debug.Log("Target " + newTowerPosition);
             if (newTowerPosition.transform != Controller.Container.NewTowerPlace)
             {
                 _tower.GetComponent<TowerController>().enabled = true;
@@ -169,6 +169,13 @@ namespace fckingCODE
             _tower.transform.localScale = Vector3.one;
             Controller.UpdateTowerController(towerController);
             Controller.UpdateMassDif();
+        }
+
+        private void OnDestroy()
+        {
+            MouseAction.Instance.OnMouseDwn -= MouseDownMethod;
+            MouseAction.Instance.OnMouseUp -= MouseUpMethod;
+            MouseAction.Instance.OnMouseDrg -= MouseDragMethod;
         }
     }
 }

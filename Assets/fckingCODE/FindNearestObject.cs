@@ -7,6 +7,7 @@ namespace fckingCODE
     {
         public static GameObject FindNearestObject(Transform thisTransform, List<GameObject> listGO)
         {
+            if (thisTransform == null) return null;
             GameObject nearestGO = listGO[0];
 
             float distance = Vector3.Distance(thisTransform.position, listGO[0].transform.position);
