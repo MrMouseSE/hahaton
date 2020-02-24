@@ -1,51 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace fckingCODE
 {
     public class EnemySpawner : MonoBehaviour
     {
-        [NonSerialized]
-        public List<GameObject> Enemyes;
+        public List<GameObject> Chunks;
+        
         public Transform player;
         public float spawnsSpeed;
         public bool doSpawns;
 
+        [NonSerialized]
+        public List<GameObject> Enemyes;
+        
         private float _timeCounter;
+        private List<GameObject> _currentChunksList = new List<GameObject>();
         
         private void Awake()
         {
             Enemyes = new List<GameObject>();
             doSpawns = true;
             _timeCounter = spawnsSpeed;
-        }
-
-        private void Update()
-        {
-            if (doSpawns == false) return;
             
-            _timeCounter -= Time.deltaTime;
-            if (_timeCounter <= 0.0f)
-            {
-                SpawnEnemy();
-                _timeCounter = spawnsSpeed;
-            }
+            SpawnNewChunk(Vector3.zero);
         }
 
-        private void SpawnEnemy()
+        public void SpawnNewChunk(Vector3 position)
         {
-            var position = GetNewEnemyPosition();
-            var newEnemy =  EnemyFactory.Spawn(1, position);
-            //newEnemy.transform.position = GetNewEnemyPosition();
+            int index = Random.Range(0, 2); 
+            var newChunk = Object.Instantiate(Chunks[index], transform, true);
+            newChunk.transform.position = position;
+
+            var container = newChunk.GetComponent<ChunkContainer>();
+            container.Spawner = this;
+            
+            _currentChunksList.Add(newChunk);
+        }
+
+        public void SpawnEnemy(int enemyIndex, Transform enemyPosition)
+        {
+            var newEnemy =  EnemyFactory.Spawn(enemyIndex, enemyPosition.position);
             newEnemy.GetComponent<EnemyController>().Init(this, player);
-            Enemyes.Add(newEnemy);
-        }
-
-        private Vector3 GetNewEnemyPosition()
-        {
-            return new Vector3(Random.Range(-10f, 10f),0,-10);
+            newEnemy.transform.parent = enemyPosition;
+            
+            if (enemyIndex!=3)
+            {
+                Enemyes.Add(newEnemy);    
+            }
         }
     }
 }
