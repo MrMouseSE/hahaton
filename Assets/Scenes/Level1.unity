@@ -910,12 +910,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!4 &1542761461 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3432396107906007651, guid: 5ca5e225446368749a15a3c3373fe659,
-    type: 3}
-  m_PrefabInstance: {fileID: 6321859806756224152}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1560679349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,11 +1191,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1560679351}
     m_Modifications:
-    - target: {fileID: 3604464289658127816, guid: 5ca5e225446368749a15a3c3373fe659,
-        type: 3}
-      propertyPath: NewTowerPosition
-      value: 
-      objectReference: {fileID: 1542761461}
     - target: {fileID: 4310742255019290255, guid: 5ca5e225446368749a15a3c3373fe659,
         type: 3}
       propertyPath: m_LocalPosition.x
