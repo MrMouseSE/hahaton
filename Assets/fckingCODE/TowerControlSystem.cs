@@ -162,7 +162,6 @@ namespace fckingCODE
 
         private void SetNewTower(GameObject towerPosition)
         {
-            //if (_tower == null) return;
             var towerController = _tower.GetComponent<TowerController>();
             
             _tower.transform.parent = towerPosition.transform;

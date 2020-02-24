@@ -40,6 +40,12 @@ namespace fckingCODE
         private void OnTriggerEnter(Collider other)
         {
             var obj = other.gameObject;
+
+            if (obj.layer == 12)
+            {
+                Debug.Log(other);
+                SelfDestruction();
+            }
             
             if (obj.layer != 0) return;
             var enemy = obj.GetComponent<EnemyContainer>();
@@ -124,7 +130,6 @@ namespace fckingCODE
             towerController.enabled = false;
             SetTowerPlace(tower.transform);
             _isBusy = true;
-            Debug.Log("is busy :" + _isBusy);
         }
 
         public void UpdateTowerController(TowerController towerController, bool remove = false)
