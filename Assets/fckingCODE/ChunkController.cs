@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -30,8 +31,8 @@ namespace fckingCODE
         private void OnTriggerStay(Collider other)
         {
             if (other.gameObject.layer != 11) return;
-            _spawnCooldown--;
-            if (Container.SpawnCooldown>0) return;
+            StartCoroutine(CooldownCounter(Container.SpawnCooldown));
+            if (_spawnCooldown>0) return;
             _spawnCooldown = Container.SpawnCooldown;
             foreach (var rageObjectSpawnPoint in Container.EnemySpawnPoints)
             {
@@ -40,6 +41,12 @@ namespace fckingCODE
                     Container.Spawner.SpawnEnemy(1, rageObjectSpawnPoint);
                 }
             }
+        }
+
+        private IEnumerator CooldownCounter(float time)
+        {
+            yield return new WaitForSeconds(time);
+            _spawnCooldown = 0;
         }
 
 
