@@ -109,6 +109,7 @@ namespace fckingCODE
 
         private void InstantiateTower(int towerID)
         {
+            Container.NewTowerPlace.gameObject.SetActive(true);
             Container.TrunkController.SetTrigger("Open");
             var tower = Instantiate(Container.Towers[towerID]);
             var towerController = tower.GetComponent<TowerController>();

@@ -9,7 +9,6 @@ namespace fckingCODE
         public Transform NewTowerPosition;
         public PlayerController Controller;
 
-        private bool _hasTower;
         private GameObject _towerPosition;
         private GameObject _tower;
 
@@ -52,6 +51,7 @@ namespace fckingCODE
 
             if (Physics.Raycast(ray, out hitInfo, 1000f, 1<<9))
             {
+                Debug.Log("target " + hitInfo.transform.gameObject);
                 return hitInfo.transform.gameObject;
             }
 
@@ -60,22 +60,17 @@ namespace fckingCODE
 
         private GameObject GetTower(GameObject towerPosition)
         {
-            if (_hasTower) return _tower;
-
             if (towerPosition.transform.childCount==0)
             {
                 return null;
             }
             var tower = towerPosition.GetComponentInChildren<TowerController>().gameObject;
-            _hasTower = true;
 
             return tower;
         }
 
         private void OnMouseUp()
         {
-            if (_hasTower)
-            {
                 var newTowerPosition = GetCastTarget();
 
                 if (newTowerPosition != null)
@@ -86,7 +81,6 @@ namespace fckingCODE
                 {
                     SetTower(_towerPosition);    
                 }
-            }
         }
 
         private void SetTower(GameObject newTowerPosition)
@@ -101,6 +95,7 @@ namespace fckingCODE
             else
             {
                 tower.enabled = true;
+                Controller.Container.NewTowerPlace.gameObject.SetActive(false);
                 Controller.Container.TrunkController.SetTrigger("Close");
                 if (newTowerPosition.transform.childCount > 0)
                 {
@@ -128,7 +123,6 @@ namespace fckingCODE
             Controller.UpdateMassDif();
             Destroy(_tower);
             _tower = null;
-            _hasTower = false;
         }
 
         private TowerUpgradeSettings GetTowerUprgadeSettings(TowerType type)
@@ -151,17 +145,15 @@ namespace fckingCODE
 
         private void SetNewTower(GameObject towerPosition)
         {
-            if (_tower == null) return;
+            //if (_tower == null) return;
             var towerController = _tower.GetComponent<TowerController>();
             
-            Controller.UpdateTowerController(towerController);
-            Controller.UpdateMassDif();
             _tower.transform.parent = towerPosition.transform;
             _tower.transform.rotation = Quaternion.Euler(0,0,0);
             _tower.transform.position = towerPosition.transform.position;
             _tower.transform.localScale = Vector3.one;
-            
-            _hasTower = false;
+            Controller.UpdateTowerController(towerController);
+            Controller.UpdateMassDif();
         }
     }
 }
