@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace fckingCODE
@@ -7,8 +8,11 @@ namespace fckingCODE
     {
         private EnemySpawner _enemySpawner;
         private Transform _target;
+        
         public GameObject _meshTransform;
         public ParticleSystem _particle;
+        public List<AudioClip> _audioClips;
+        public AudioSource _audioSource;
         
         public EnemyContainer _enemyContainer;
 
@@ -16,6 +20,7 @@ namespace fckingCODE
         {
             _enemySpawner = enemySpawner;
             _target = target;
+            _audioSource.clip = _audioClips[Random.Range(0, _audioClips.Count)];
         }
 
         private void Update()
@@ -67,6 +72,7 @@ namespace fckingCODE
             _enemySpawner.Enemyes.Remove(gameObject);
             _target = null;
             _meshTransform.SetActive(false);
+            _audioSource.Play();
             _particle.Play();
             yield return new WaitForSeconds(_particle.main.duration);
             Destroy(gameObject);
