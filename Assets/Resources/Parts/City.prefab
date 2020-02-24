@@ -4283,6 +4283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Spawner: {fileID: 0}
+  SpawnCooldown: 5
   RageObjectWeight:
     serializedVersion: 2
     m_Curve: []
@@ -4348,7 +4349,6 @@ MonoBehaviour:
   - {fileID: 9186627687655910660}
   - {fileID: 4005899632297860102}
   - {fileID: 3053212970937107236}
-  - {fileID: 6491591389077565692}
 --- !u!114 &4984435088974241812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5420,7 +5420,6 @@ Transform:
   - {fileID: 9186627687655910660}
   - {fileID: 4005899632297860102}
   - {fileID: 3053212970937107236}
-  - {fileID: 6491591389077565692}
   m_Father: {fileID: 1048082490541203251}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6058,7 +6057,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9186627687655910660}
   - component: {fileID: 5745512087415651709}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6073,7 +6072,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1929685280902641626}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -34.7, y: 0, z: 26.2}
+  m_LocalPosition: {x: -25.1, y: 0, z: 25.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6026785921390227322}
@@ -6808,7 +6807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4005899632297860102}
   - component: {fileID: 7772691089028513303}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6823,7 +6822,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2335750342409965055}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.7, y: 0, z: -45.3}
+  m_LocalPosition: {x: 23.7, y: 0, z: 38.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6026785921390227322}
@@ -7042,7 +7041,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 835231357569331001}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Obstacle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7418,7 +7417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1404477945187255886}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Obstacle_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8148,50 +8147,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 3191222220429760939, guid: 164443ba96beb14469c74db2e920ecb0, type: 3}
---- !u!1 &4227430769373613255
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6491591389077565692}
-  - component: {fileID: 1025003921252274100}
-  m_Layer: 0
-  m_Name: Enemy_06
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6491591389077565692
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4227430769373613255}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -31.4, y: 0, z: 5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6026785921390227322}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1025003921252274100
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4227430769373613255}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 33
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4280166551953245027
 GameObject:
   m_ObjectHideFlags: 0
@@ -8486,7 +8441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3053212970937107236}
   - component: {fileID: 51722498346557608}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8501,7 +8456,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4496583841833687336}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.1, y: 0, z: 36.4}
+  m_LocalPosition: {x: -27, y: 0, z: 26.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6026785921390227322}
@@ -10864,7 +10819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5820331870702316642}
   - component: {fileID: 1730377123929540111}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10879,7 +10834,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7014607344908652479}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.2, y: 0, z: -24}
+  m_LocalPosition: {x: 20.14, y: 0, z: -13.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6026785921390227322}
@@ -11332,7 +11287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1144353546416775844}
   - component: {fileID: 1507451235638906632}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11347,7 +11302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7783035226203403517}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.4, y: 0, z: -26.4}
+  m_LocalPosition: {x: -28.94, y: 0, z: -40.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6026785921390227322}
@@ -13030,7 +12985,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7105054333156094190}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Obstacle_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13045,7 +13000,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9162074867530511265}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.4, y: 0, z: -15.7}
+  m_LocalPosition: {x: -4.91, y: 0, z: -23.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5200522171924338235}
