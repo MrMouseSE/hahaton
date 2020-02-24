@@ -9,14 +9,27 @@
           <e p="BulletController.cs" t="Include" />
           <e p="EnemyContainer.cs" t="Include" />
           <e p="EnemyController.cs" t="Include" />
+          <e p="EnemyFactory.cs" t="Include" />
+          <e p="EnemySettings.cs" t="Include" />
+          <e p="EnemySettingsContainer.cs" t="Include" />
           <e p="EnemySpawner.cs" t="Include" />
           <e p="FindNearestObject.cs" t="Include" />
+          <e p="MenuController.cs" t="Include" />
           <e p="PlayerContainer.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
-          <e p="StartMenu.cs" t="Include" />
           <e p="TowerContainer.cs" t="Include" />
           <e p="TowerController.cs" t="Include" />
           <e p="TowerControlSystem.cs" t="Include" />
+          <e p="TowerUpgradeSettings.cs" t="Include" />
+          <e p="TowerUpgradeSettingsContainer.cs" t="Include" />
+        </e>
+        <e p="MOBA and Tower Defense" t="Include">
+          <e p="Prefabs_props" t="Include">
+            <e p="Shaders" t="Include">
+              <e p="EnableCameraDepthInForward.cs" t="Include" />
+              <e p="MK4Toon Water Trans.shader" t="Include" />
+            </e>
+          </e>
         </e>
       </e>
       <e p="hahaton.sln" t="IncludeFlat" />
