@@ -117,14 +117,11 @@ namespace fckingCODE
 
         public void UpdateTowerController(TowerController towerController, bool remove = false)
         {
-            if (remove)
+            if (_towerControllers.Contains(towerController))
             {
-                if (_towerControllers.Contains(towerController))
-                {
-                    _towerControllers.Remove(towerController);
-                }
+                _towerControllers.Remove(towerController);
             }
-            else
+            if (!remove)
             {
                 _towerControllers.Add(towerController);
             }
